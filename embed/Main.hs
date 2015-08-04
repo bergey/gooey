@@ -4,14 +4,14 @@
 
 module Main where
 
-import GHCJS.DOM.HTMLElement
-import GHCJS.DOM
-import GHCJS.DOM.Document
+import           GHCJS.DOM
+import           GHCJS.DOM.Document
+import           GHCJS.DOM.HTMLElement
 
-import Data.FileEmbed
-import Data.Text.Encoding
-import Data.ByteString (ByteString)
-import Control.Applicative
+import           Control.Applicative
+import           Data.ByteString       (ByteString)
+import           Data.FileEmbed
+import           Data.Text.Encoding
 
 main :: IO ()
 main = do

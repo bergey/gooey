@@ -2,9 +2,9 @@
 
 module Main where
 
-import GHCJS.DOM.HTMLElement
-import GHCJS.DOM
-import GHCJS.DOM.Document
+import           GHCJS.DOM
+import           GHCJS.DOM.Document
+import           GHCJS.DOM.HTMLElement
 
 main :: IO ()
 main = do

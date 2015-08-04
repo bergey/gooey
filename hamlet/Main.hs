@@ -1,16 +1,16 @@
+{-# LANGUAGE QuasiQuotes     #-}
 {-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE QuasiQuotes #-}
 
 -- | A simple example using getElementById and file-embed
 
 module Main where
 
-import GHCJS.DOM.HTMLElement
-import GHCJS.DOM
-import GHCJS.DOM.Document
-import Text.Blaze.Html (Html)
-import Text.Blaze.Html.Renderer.Text (renderHtml)
-import Text.Hamlet (shamlet)
+import           GHCJS.DOM
+import           GHCJS.DOM.Document
+import           GHCJS.DOM.HTMLElement
+import           Text.Blaze.Html               (Html)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
+import           Text.Hamlet                   (shamlet)
 
 main :: IO ()
 main = do
