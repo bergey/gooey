@@ -1,0 +1,12 @@
+* GHCJS Examples
+** hello
+Hello World example, uses the bare minimum of functions from
+=ghcjs-dom= to get text into the browser window.
+** embed
+Only slightly more elaborate than =hello=, sets a large chunk of
+static HTML, and then selects several elements by id.  The use of
+~documentGetElementById~ is important.  The use of ~embedFile~ is not
+so important.  Both will disappear as I move to better libraries for
+constructing HTML.
+** hamlet
+Use =hamlet= and =blaze-html= to create the inner HTML content.
