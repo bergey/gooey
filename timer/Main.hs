@@ -96,9 +96,7 @@ onclick doc q elemId ev = do
   case mayElem of
     Nothing -> putStrLn $ "error: could not find element with id: " ++ elemId
     Just elem -> do
-      elementOnclick elem . liftIO $ do
-        putStrLn ("pressed " ++ elemId)
-        push q ev
+      elementOnclick elem . liftIO $ push q ev
       return ()
 
 -- | Each pair is an element ID and the Event raised by the element.
