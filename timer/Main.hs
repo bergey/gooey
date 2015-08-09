@@ -43,7 +43,7 @@ main = do
   -- bind callbacks that fire events
   traverse_ (uncurry $ onclick doc eventQueue) buttons
   -- render in a loop
-  _ <- forkIO $ render state
+  animate =<< syncCallback NeverRetain False (render state)
   -- fork a thread for the event handler
   _ <- forkIO $ queueHandler state eventQueue handleEvent
   -- register a timer for the countdown, interval in ms
@@ -83,10 +83,7 @@ render sVar = do
              , mod s sPerHour `div` sPerMinute
              , s `mod` sPerMinute
              ]
-  print s
   sequence_ $ zipWith (setText doc) ids nums
-  -- print $ AppState s0 t0 t
-  render sVar
 
 setText :: Document -> String -> String -> IO ()
 setText doc elemId val = do
