@@ -10,3 +10,5 @@ so important.  Both will disappear as I move to better libraries for
 constructing HTML.
 ** hamlet
 Use =hamlet= and =blaze-html= to create the inner HTML content.
+** timer
+A countdown timer using an MVar event queue to tie the knot.  Callbacks on DOM elements add events to the queue.  A single Haskell thread pops events from the queue and updates the (global) state.  A ~render~ function is called in a loop by ~requestAnimationFrame~ and updates the DOM based on the global state.
