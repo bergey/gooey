@@ -1,0 +1,92 @@
+<!-- -from http://www.rmkwebdesign.com/Countdown_Timers/Samples.php -->
+<html>
+    <head>
+        <style type="text/css">
+         body {
+             background: black;
+         }
+         .numbers {
+             border-style: ridge;    /* options are none, dotted, dashed, solid, double, groove, ridge, inset, outset */
+             border-width: 2px;
+             border-color: #666666;  /* change the border color using the hexadecimal color codes for HTML */
+             background: #222222;    /* change the background color using the hexadecimal color codes for HTML */
+             padding: 2px 0px;
+             width: 55px;
+             text-align: center;
+             font-family: Arial;
+             font-size: 28px;
+             font-weight: bold;    /* options are normal, bold, bolder, lighter */
+             font-style: normal;   /* options are normal or italic */
+             color: #FFFFFF;       /* change color using the hexadecimal color codes for HTML */
+         }
+         .title {    /* the styles below will affect the title under the numbers, i.e., “Days”, “Hours”, etc. */
+             border: none;
+             padding: 0px;
+             width: 55px;
+             text-align: center;
+             font-family: Arial;
+             font-size: 10px;
+             font-weight: normal;  /* options are normal, bold, bolder, lighter */
+             color: #DDDDDD;       /* change color using the hexadecimal color codes for HTML */
+             background: transparent;    /* change the background color using the hexadecimal color codes for HTML */
+         }
+         .button {
+             border: 1px green solid;
+             padding: 0px;
+             width: 55px;
+             text-align: center;
+             font-family: Arial;
+             font-size: 18px;
+             font-weight: normal;  /* options are normal, bold, bolder, lighter */
+             color: #DDDDDD;       /* change color using the hexadecimal color codes for HTML */
+             background: #222222;    /* change the background color using the hexadecimal color codes for HTML */
+         }
+         #table {
+             width: 400px;
+             border: none;    /* options are none, dotted, dashed, solid, double, groove, ridge, inset, outset */
+             margin: 0px auto;
+             position: relative;    /* leave as "relative" to keep timer centered on your page, or change to "absolute" then change the values of the "top" and "left" properties to position the timer */
+             top: 0px;        /* change to position the timer */
+             left: 0px;        /* change to position the timer; delete this property and it's value to keep timer centered on page */
+         }
+        </style>
+        <script language="javascript" src="rts.js"></script>
+        <script language="javascript" src="lib.js"></script>
+        <script language="javascript" src="out.js"></script>
+    </head>
+    <body>
+        <table id="table" border="0">
+            <tr id="plus-row">
+                <td align="center" class="title"></td>
+                <td align="center" class="button" id="plus-day">+</td>
+                <td align="center" class="button" id="plus-hour">+</td>
+                <td align="center" class="button" id="plus-minute">+</td>
+                <td align="center" class="button" id="plus-second">+</td>
+            </tr>
+            <tr id="spacer1">
+                <td align="center" class="title" ></td>
+                <td align="center" class="numbers" id="dday"></td>
+                <td align="center" class="numbers" id="dhour"></td>
+                <td align="center" class="numbers" id="dmin"></td>
+                <td align="center" class="numbers" id="dsec"></td>
+                <td align="center" class="title" ></td>
+            </tr>
+            <tr id="spacer2">
+                <td align="center" class="title" ></td>
+                <td align="center" class="title" id="days">Days</td>
+                <td align="center" class="title" id="hours">Hours</td>
+                <td align="center" class="title" id="minutes">Minutes</td>
+                <td align="center" class="title" id="seconds">Seconds</td>
+                <td align="center" class="title" ></td>
+            </tr>
+            <tr id="minus-row">
+                <td align="center" class="title"></td>
+                <td align="center" class="button" id="minus-day">-</td>
+                <td align="center" class="button" id="minus-hour">-</td>
+                <td align="center" class="button" id="minus-minute">-</td>
+                <td align="center" class="button" id="minus-second">-</td>
+            </tr>
+        </table>
+    </body>
+    <script language="javascript" src="runmain.js" defer></script>
+</html>
