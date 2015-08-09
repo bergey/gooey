@@ -34,7 +34,7 @@ main = do
   -- initialize mutable variables
   eventQueue <- newQueue :: IO (Queue Event)
   t0 <- now -- ms
-  state <- newMVar $ AppState 120 t0 t0
+  state <- newMVar $ AppState 120 t0 t0 True
   -- render the static parts of the HTML
   Just doc <- currentDocument
   Just body <- documentGetBody doc
@@ -52,6 +52,7 @@ data AppState = AppState
                 Int -- ^ Seconds at which timer started
                 Double -- ^ ms since epoch when timer started
                 Double -- ^ last tick
+                Bool -- ^ Running?
               deriving Show
 
 data Event
@@ -60,6 +61,7 @@ data Event
   | Minute Step
   | Second Step
   | Tick Double
+  |
   deriving Show
 
 data Step = Up | Down
@@ -68,7 +70,7 @@ data Step = Up | Down
 render :: MVar AppState -> IO ()
 render sVar = do
   Just doc <- currentDocument
-  AppState s0 t0 t <- readMVar sVar
+  AppState s0 t0 t _ <- readMVar sVar
   let ids = ["dday", "dhour", "dmin", "dsec"]
       s = s0 - floor ((t - t0) / 1e3)
       nums = map show
@@ -108,7 +110,12 @@ buttons =
 
 -- | The specific event handler for this application
 handleEvent :: Event -> AppState -> IO AppState
-handleEvent ev (AppState s t0 t) = return $ AppState (f ev) t0 tick where
+handleEvent (Tick t) (AppState s t0 _ True) =
+  if s - (floor $ (t - t0) / 1e3) > 0
+  then return $ AppState s t0 t True
+  else return $ AppState s t t False
+handleEvent (Tick t) st = return st
+handleEvent ev (AppState s t0 t r) = return $ AppState (f ev) t0 t r where
   f (Day step) = g step sPerDay
   f (Hour step) = g step sPerHour
   f (Minute step) = g step sPerMinute
@@ -116,9 +123,10 @@ handleEvent ev (AppState s t0 t) = return $ AppState (f ev) t0 tick where
   f _ = s
   g Up ss = s + ss
   g Down ss = max 0 (s - ss)
-  tick = case ev of
-    Tick t' -> t'
-    _ -> t
+  -- tick = case ev of
+  --   Tick t' -> t'
+  --   _ -> t
+  -- r' = if s - (floor $ (t - tick) / 1e3) < 0 then False else r
 
 timer :: Queue Event -> IO ()
 timer q = do
