@@ -61,7 +61,9 @@ data Event
   | Minute Step
   | Second Step
   | Tick Double
-  |
+  | Pause
+  | Resume
+  | Stop -- ^ stop, forgetting how long timer ran
   deriving Show
 
 data Step = Up | Down
@@ -106,6 +108,9 @@ buttons =
   , ("minus-hour", Hour Down)
   , ("minus-minute", Minute Down)
   , ("minus-second", Second Down)
+  , ("pause", Pause)
+  , ("resume", Resume)
+  , ("stop", Stop)
   ]
 
 -- | The specific event handler for this application
@@ -115,6 +120,14 @@ handleEvent (Tick t) (AppState s t0 _ True) =
   then return $ AppState s t0 t True
   else return $ AppState s t t False
 handleEvent (Tick t) st = return st
+handleEvent Pause (AppState s t0 t _) = return $ AppState s t0 t False
+handleEvent Resume (AppState s t0 t1 False) = do
+  t <- now
+  return $ AppState s (t - (t1 - t0)) t True
+handleEvent Stop (AppState s _ _ _) = do
+  t <- now
+  return $ AppState s t t False
+-- plus & minus buttons
 handleEvent ev (AppState s t0 t r) = return $ AppState (f ev) t0 t r where
   f (Day step) = g step sPerDay
   f (Hour step) = g step sPerHour
@@ -123,16 +136,11 @@ handleEvent ev (AppState s t0 t r) = return $ AppState (f ev) t0 t r where
   f _ = s
   g Up ss = s + ss
   g Down ss = max 0 (s - ss)
-  -- tick = case ev of
-  --   Tick t' -> t'
-  --   _ -> t
-  -- r' = if s - (floor $ (t - tick) / 1e3) < 0 then False else r
 
 timer :: Queue Event -> IO ()
 timer q = do
   t <- now
   push q $ Tick t
-  -- threadDelay 500000
 
 -- | A helper function to hook an event handler to an event queue
 queueHandler :: MVar s -> Queue e -> (e -> s -> IO s) -> IO ()
