@@ -21,7 +21,7 @@ executable hello
   default-language: Haskell2010
   build-depends: base >= 4.7 && <4.9
                , ghcjs-base
-               , ghcjs-dom
+               , ghcjs-dom >= 0.2 && < 0.3
 
 executable embed
   hs-source-dirs: embed
@@ -29,7 +29,7 @@ executable embed
   default-language: Haskell2010
   build-depends: base >= 4.7 && <4.9
                , ghcjs-base
-               , ghcjs-dom
+               , ghcjs-dom >= 0.2 && < 0.3
                , file-embed
                , text
                , bytestring
@@ -40,9 +40,10 @@ executable hamlet
   default-language: Haskell2010
   build-depends: base >= 4.7 && <4.9
                , ghcjs-base
-               , ghcjs-dom
+               , ghcjs-dom >= 0.2 && < 0.3
                , shakespeare
                , blaze-html
+               , text
 
 executable timer
   main-is:             Main.hs
@@ -52,7 +53,7 @@ executable timer
   build-depends:       base >=4.7 && <4.9
                      ,  transformers
                      , ghcjs-base
-                     , ghcjs-dom
+                     , ghcjs-dom >= 0.2 && < 0.3
                      , containers
                      , file-embed
                      , text
@@ -70,7 +71,7 @@ executable TodoMVC
   build-depends:       base >=4.7 && <4.9
                      ,  transformers
                      , ghcjs-base
-                     , ghcjs-dom
+                     , ghcjs-dom >= 0.2 && < 0.3
                      , ghcjs-vdom
                      , containers
                      -- , file-embed

@@ -6,28 +6,33 @@
 module Main where
 
 import           JsImports
-import           Queue                   as Q
+import           Queue                         as Q
 
 import           GHCJS.DOM
 import           GHCJS.DOM.Document
 import           GHCJS.DOM.Element
+import           GHCJS.DOM.EventTarget
+import           GHCJS.DOM.EventTargetClosures
 import           GHCJS.DOM.HTMLElement
--- import           GHCJS.DOM.Node
+import           GHCJS.DOM.Types               hiding (Event)
 import           GHCJS.Foreign
--- import           GHCJS.Types
+import           GHCJS.Foreign.Callback
+import           GHCJS.Marshal
+import           JavaScript.Web.AnimationFrame
 
 import           Control.Applicative
 import           Control.Concurrent
 import           Control.Concurrent.MVar
-import           Control.Monad           hiding (sequence_)
+import           Control.Monad                 hiding (sequence_)
 import           Control.Monad.IO.Class
-import           Data.ByteString         (ByteString)
+import           Data.ByteString               (ByteString)
 import           Data.FileEmbed
 import           Data.Foldable
+import qualified Data.Text                     as T
 import           Data.Text.Encoding
-import           GHC.Exts                (IsString (..))
+import           GHC.Exts                      (IsString (..))
 
-import           Prelude                 hiding (sequence_)
+import           Prelude                       hiding (sequence_)
 
 main :: IO ()
 main = do
@@ -37,16 +42,16 @@ main = do
   state <- newMVar $ AppState 120 t0 t0 True
   -- render the static parts of the HTML
   Just doc <- currentDocument
-  Just body <- documentGetBody doc
-  htmlElementSetInnerHTML body $ decodeUtf8 initialHtml
+  Just body <- getBody doc
+  setInnerHTML body . Just . T.unpack . decodeUtf8 $ initialHtml
   -- bind callbacks that fire events
   traverse_ (uncurry $ onclick doc eventQueue) buttons
   -- render in a loop
-  animate =<< syncCallback NeverRetain False (render state)
+  void $ inAnimationFrame ContinueAsync $ render state
   -- fork a thread for the event handler
   _ <- forkIO $ queueHandler state eventQueue handleEvent
   -- register a timer for the countdown, interval in ms
-  setInterval 500 (timer eventQueue)
+  void $ setInterval (timer eventQueue) 500
 
 data AppState = AppState
                 Int -- ^ Seconds at which timer started
@@ -85,17 +90,17 @@ render sVar = do
 
 setText :: Document -> String -> String -> IO ()
 setText doc elemId val = do
-  Just elem <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc elemId
-  htmlElementSetInnerText elem val
+  Just elem <- (fmap . fmap) castToHTMLElement $ getElementById doc elemId
+  setInnerText elem $ Just val
 
 onclick :: Document -> Queue Event -> String -> Event -> IO ()
 onclick doc q elemId ev = do
-  mayElem <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc elemId
+  mayElem <- getElementById doc elemId
   case mayElem of
     Nothing -> putStrLn $ "error: could not find element with id: " ++ elemId
     Just elem -> do
-      elementOnclick elem . liftIO $ push q ev
-      return ()
+      cb <- eventListenerNew (const $ push q ev :: MouseEvent -> IO ())
+      addEventListener elem "click" (Just cb) False
 
 -- | Each pair is an element ID and the Event raised by the element.
 buttons :: [(String, Event)]
@@ -151,10 +156,10 @@ queueHandler s q h = pop q >>= \case
   Nothing -> threadDelay 10000 >> queueHandler s q h
   Just ev -> modifyMVar_ s (h ev) >> queueHandler s q h
 
-setInterval :: Double -> IO () -> IO ()
-setInterval t act = do
-  cb <- syncCallback AlwaysRetain False act
-  windowSetInterval cb t
+setInterval :: IO () -> Int -> IO Int
+setInterval act t = do
+  cb <- toJSRef =<< syncCallback ContinueAsync act
+  js_setInterval cb t
 
 sPerMinute, sPerHour, sPerDay :: Int
 sPerMinute = 60
