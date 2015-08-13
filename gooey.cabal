@@ -48,8 +48,7 @@ executable hamlet
 executable timer
   main-is:             Main.hs
   other-modules:
-    Queue
-  -- other-extensions:
+-- other-extensions:
   build-depends:       base >=4.7 && <4.9
                      ,  transformers
                      , ghcjs-base
@@ -64,7 +63,6 @@ executable timer
 executable TodoMVC
   main-is:             Main.hs
   other-modules:
-                Queue
                 Types
                 Render
   -- other-extensions:

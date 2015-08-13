@@ -4,7 +4,6 @@
 module Main where
 
 import           Orphans
-import           Queue
 import           Render
 import           Types
 
@@ -20,6 +19,7 @@ import qualified GHCJS.VDOM.Element            as E
 import           JavaScript.Web.AnimationFrame
 
 import           Control.Concurrent
+import           Control.Concurrent.Chan
 import           Control.Concurrent.MVar
 import           Control.Monad                 hiding (sequence_)
 import           Data.Char
@@ -29,7 +29,7 @@ import           Data.Semigroup                ((<>))
 
 main :: IO ()
 main = do
-  actionQueue <- newQueue
+  actionQueue <- newChan
   state <- newMVar $ initialState
 
   -- mount VDom
@@ -44,10 +44,10 @@ main = do
 
 -- It would be easy to factor out State from this, and take @render@
 -- as an argument.
-animate :: VMount -> Queue Action -> MVar State -> IO ()
+animate :: VMount -> Chan Action -> MVar State -> IO ()
 animate m q sVar = do
   s <- readMVar sVar
-  p <- diff m (render (push q) s)
+  p <- diff m (render (writeChan q) s)
   void $ inAnimationFrame ContinueAsync $ patch m p >> animate m q sVar
 
 update :: Action -> State -> State
@@ -91,5 +91,14 @@ updateTask Commit task = case edits task of
            }
 updateTask (Complete c) task = Just $ task { completed = c }
 
+-- utility functions, not specific to this application
+
 trim :: S.JSString -> S.JSString
 trim = S.dropWhile isSpace . S.dropWhileEnd isSpace
+
+-- | A helper function to hook an event handler to an event queue
+queueHandler :: MVar s -> Chan e -> (e -> s -> s) -> IO ()
+queueHandler s q h = do
+  ev <- readChan q
+  modifyMVar_ s (return . h ev)
+  queueHandler s q h

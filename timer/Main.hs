@@ -6,7 +6,6 @@
 module Main where
 
 import           JsImports
-import           Queue                         as Q
 
 import           GHCJS.DOM
 import           GHCJS.DOM.Document
@@ -37,7 +36,7 @@ import           Prelude                       hiding (sequence_)
 main :: IO ()
 main = do
   -- initialize mutable variables
-  eventQueue <- newQueue :: IO (Queue Event)
+  eventQueue <- newChan :: IO (Chan Event)
   t0 <- now -- ms
   state <- newMVar $ AppState 120 t0 t0 True
   -- render the static parts of the HTML
@@ -93,13 +92,13 @@ setText doc elemId val = do
   Just elem <- (fmap . fmap) castToHTMLElement $ getElementById doc elemId
   setInnerText elem $ Just val
 
-onclick :: Document -> Queue Event -> String -> Event -> IO ()
+onclick :: Document -> Chan Event -> String -> Event -> IO ()
 onclick doc q elemId ev = do
   mayElem <- getElementById doc elemId
   case mayElem of
     Nothing -> putStrLn $ "error: could not find element with id: " ++ elemId
     Just elem -> do
-      cb <- eventListenerNew (const $ push q ev :: MouseEvent -> IO ())
+      cb <- eventListenerNew (const $ writeChan q ev :: MouseEvent -> IO ())
       addEventListener elem "click" (Just cb) False
 
 -- | Each pair is an element ID and the Event raised by the element.
@@ -142,19 +141,17 @@ handleEvent ev (AppState s t0 t r) = return $ AppState (f ev) t0 t r where
   g Up ss = s + ss
   g Down ss = max 0 (s - ss)
 
-timer :: Queue Event -> IO ()
+timer :: Chan Event -> IO ()
 timer q = do
   t <- now
-  push q $ Tick t
+  writeChan q $ Tick t
 
 -- | A helper function to hook an event handler to an event queue
-queueHandler :: MVar s -> Queue e -> (e -> s -> IO s) -> IO ()
-queueHandler s q h = pop q >>= \case
-  -- With only one thread reading the queue, Nothing should never
-  -- occur.  But this is an OK way to handle it anyway.
-  -- 1e4 µs = 0.01 seconds
-  Nothing -> threadDelay 10000 >> queueHandler s q h
-  Just ev -> modifyMVar_ s (h ev) >> queueHandler s q h
+queueHandler :: MVar s -> Chan e -> (e -> s -> IO s) -> IO ()
+queueHandler s q h = do
+  ev <- readChan q
+  modifyMVar_ s (h ev)
+  queueHandler s q h
 
 setInterval :: IO () -> Int -> IO Int
 setInterval act t = do
