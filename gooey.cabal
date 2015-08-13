@@ -59,3 +59,22 @@ executable timer
                      , bytestring
   hs-source-dirs:      timer
   default-language:    Haskell2010
+
+executable TodoMVC
+  main-is:             Main.hs
+  other-modules:
+                Queue
+                Types
+                Render
+  -- other-extensions:
+  build-depends:       base >=4.7 && <4.9
+                     ,  transformers
+                     , ghcjs-base
+                     , ghcjs-dom
+                     , ghcjs-vdom
+                     , containers
+                     -- , file-embed
+                     -- , text
+                     -- , bytestring
+  hs-source-dirs:      TodoMVC
+  default-language:    Haskell2010
