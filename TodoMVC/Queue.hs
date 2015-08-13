@@ -6,6 +6,7 @@
 module Queue where
 
 import           Control.Applicative
+import           Control.Concurrent
 import           Control.Concurrent.MVar
 import           Control.Monad
 import           Data.Sequence           as S
@@ -45,10 +46,10 @@ safeTailHeadR s = case viewr s of
   s' :> r -> (s', Just r)
 
 -- | A helper function to hook an event handler to an event queue
-queueHandler :: MVar s -> Queue e -> (e -> s -> IO s) -> IO ()
+queueHandler :: MVar s -> Queue e -> (e -> s -> s) -> IO ()
 queueHandler s q h = pop q >>= \case
   -- With only one thread reading the queue, Nothing should never
   -- occur.  But this is an OK way to handle it anyway.
   -- 1e4 µs = 0.01 seconds
   Nothing -> threadDelay 10000 >> queueHandler s q h
-  Just ev -> modifyMVar_ s (h ev) >> queueHandler s q h
+  Just ev -> modifyMVar_ s (return . h ev) >> queueHandler s q h

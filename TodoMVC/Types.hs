@@ -1,26 +1,32 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 -- | Data types for the TodoMVC demo: state and actions (edges in the
 -- state machine).
 
-import GHCJS.Prim
-
 module Types where
 
+import           Data.JSString
+import           GHCJS.Types
+
 data Task = Task
-            { description :: String
+            { description :: JSString
             , completed   :: Bool
-            , edits       :: Maybe String
-            , taskId          :: Int
-            }
+            , edits       :: Maybe JSString
+            , taskId      :: Int
+            } deriving (Show, Eq)
+
+mkTask :: JSString -> Int -> Task
+mkTask desc i = Task desc False Nothing i
 
 data State = State
              { tasks      :: [Task]
-             , field      :: String
+             , field      :: JSString
              , uid        :: Int
              , visibility :: Visibility
-             }
+             } deriving (Show, Eq)
 
 data Visibility = Completed | Active | All
-                deriving Show
+                deriving (Show, Eq)
 
 data TaskAction
   = Focus
@@ -39,12 +45,11 @@ data Action
   | CheckAll Bool
   | ChangeVisibility Visibility
 
-updateTask :: TaskAction -> Action
-updateTask (i, a) = UpdateTask i a
-
 type Push a = a -> IO ()
 
 type Pop a = IO a
+
+type TaskAction' = (Int, TaskAction)
 
 initialState :: State
 initialState = State [] "" 0 All
