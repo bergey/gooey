@@ -3,18 +3,17 @@
 
 module Main where
 
-import           Render
-
 import qualified Data.JSString                 as S
 import           GHCJS.DOM
-import           GHCJS.DOM.Document
-import           GHCJS.DOM.Element
-import           GHCJS.DOM.HTMLElement
 import           GHCJS.Foreign.Callback
 import           GHCJS.Foreign.QQ
 import           GHCJS.VDOM
 import qualified GHCJS.VDOM.Element            as E
 import           JavaScript.Web.AnimationFrame
+
+import           GHCJS.VDOM
+import           GHCJS.VDOM.Element            (input)
+import           GHCJS.VDOM.Event              (keypress)
 
 import           Control.Concurrent
 import           Control.Concurrent.Chan
@@ -45,7 +44,7 @@ main = do
 animate :: VMount -> Chan () -> MVar () -> IO ()
 animate m q sVar = do
   s <- readMVar sVar
-  p <- diff m (render (writeChan q) s)
+  p <- diff m (render (writeChan q))
   void $ inAnimationFrame ContinueAsync $ patch m p >> animate m q sVar
 
 update :: () -> () -> ()
@@ -57,3 +56,9 @@ queueHandler s q h = do
   ev <- readChan q
   modifyMVar_ s (return . h ev)
   queueHandler s q h
+
+render :: (() -> IO ()) -> VNode
+render raise = input [keypress (raise . entryHandler)] ()
+
+entryHandler :: a -> ()
+entryHandler ev = ()
