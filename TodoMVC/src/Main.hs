@@ -3,9 +3,7 @@
 
 module Main where
 
-import           Orphans
 import           Render
-import           Types
 
 import qualified Data.JSString                 as S
 import           GHCJS.DOM
@@ -30,7 +28,7 @@ import           Data.Semigroup                ((<>))
 main :: IO ()
 main = do
   actionQueue <- newChan
-  state <- newMVar $ initialState
+  state <- newMVar ()
 
   -- mount VDom
   root <- [js| document.createElement('div') |]
@@ -44,13 +42,13 @@ main = do
 
 -- It would be easy to factor out State from this, and take @render@
 -- as an argument.
-animate :: VMount -> Chan Action -> MVar State -> IO ()
+animate :: VMount -> Chan () -> MVar () -> IO ()
 animate m q sVar = do
   s <- readMVar sVar
   p <- diff m (render (writeChan q) s)
   void $ inAnimationFrame ContinueAsync $ patch m p >> animate m q sVar
 
-update :: Action -> State -> State
+update :: () -> () -> ()
 update = const id
 
 -- | A helper function to hook an event handler to an event queue

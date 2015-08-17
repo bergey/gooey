@@ -5,9 +5,6 @@
 
 module Render where
 
-import           Orphans
-import           Types
-
 import           Data.Bool
 import           GHCJS.Types
 import           GHCJS.VDOM
@@ -21,17 +18,14 @@ import           GHC.Exts             (IsString, fromString)
 
 import           Prelude              hiding (div)
 
-render :: Push Action -> State -> VNode
+render :: (() -> IO ()) -> () -> VNode
 render raise s = input
     [ A.id "new-todo"
     , autofocus True
-    , value (field s)
+    -- , value (field s)
     , name "newTodo"
     , keypress (raise . entryHandler)
     ] ()
 
-entryHandler :: KeyboardEvent -> Action
-entryHandler ev = case V.key ev of
-  "Enter" -> Add
-  "Escape" -> NoOp
-  k -> UpdateField k
+entryHandler :: KeyboardEvent -> ()
+entryHandler ev = ()

@@ -15,8 +15,6 @@ cabal-version:       >=1.10
 executable TodoMVC
   main-is:             Main.hs
   other-modules:
-                Types
-                Render
   -- other-extensions:
   build-depends:       base >=4.7 && <4.9
                      ,  transformers
