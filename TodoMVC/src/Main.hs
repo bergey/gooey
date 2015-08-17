@@ -14,7 +14,7 @@ import           GHCJS.VDOM.Event              (keypress)
 import           Control.Concurrent
 import           Control.Concurrent.Chan
 import           Control.Concurrent.MVar
-import           Control.Monad                 (void)
+import           Control.Monad                 (forever, void)
 
 main :: IO ()
 main = do
@@ -25,6 +25,9 @@ main = do
   root <- [js| document.createElement('div') |]
   [js_| document.body.appendChild(`root); |]
   m <- mount root (E.div () ())
+  void . forkIO . forever $ do
+    writeChan actionQueue ()
+    threadDelay 1000000
   -- render in a loop
   animate m actionQueue state
   -- fork event handler
@@ -44,4 +47,5 @@ queueHandler s q = do
   queueHandler s q
 
 render :: (IO ()) -> VNode
-render raise = E.input [keypress (const raise)] ()
+render _ = E.input () ()
+-- render raise = E.input [keypress (const raise)] ()
