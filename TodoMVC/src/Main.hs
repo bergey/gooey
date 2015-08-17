@@ -51,50 +51,7 @@ animate m q sVar = do
   void $ inAnimationFrame ContinueAsync $ patch m p >> animate m q sVar
 
 update :: Action -> State -> State
-update NoOp state = state
-update (UpdateField str) state = state { field = str }
-update Add state = let desc = trim (field state) in
-  if desc == "" then state else state
-                                { uid = uid state + 1
-                                , field = ""
-                                , tasks = tasks state ++ [mkTask desc (uid state)]
-                                }
-update (UpdateTask i a) state = let
-  f t = if taskId t == i then updateTask a t else Just t
-  in
-    state { tasks = catMaybes . fmap f $ tasks state}
-update DeleteComplete state =
-  state { tasks = filter ( not . completed ) $ tasks state }
-update (CheckAll ch) state = let
-  f t = t { completed = ch }
-  in
-    state { tasks = fmap f $ tasks state }
-update (ChangeVisibility vis) state = state { visibility = vis }
-
-updateTask :: TaskAction -> Task -> Maybe Task
-updateTask Delete _ = Nothing
-updateTask Focus task = Just $ task { edits = Just $ description task }
-updateTask (Edit k) task = let
-  edits' = fromMaybe "" $ edits task
-    in
-    Just $ task { edits = Just $ edits' <> k }
-updateTask Cancel task = Just $ task { edits = Nothing }
-updateTask Commit task = case edits task of
-  Nothing -> Just task
-  Just raw -> let
-    desc = trim raw
-    in
-      if desc == "" then Nothing
-      else Just $ task
-           { edits = Nothing
-           , description = desc
-           }
-updateTask (Complete c) task = Just $ task { completed = c }
-
--- utility functions, not specific to this application
-
-trim :: S.JSString -> S.JSString
-trim = S.dropWhile isSpace . S.dropWhileEnd isSpace
+update = const id
 
 -- | A helper function to hook an event handler to an event queue
 queueHandler :: MVar s -> Chan e -> (e -> s -> s) -> IO ()
