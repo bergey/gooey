@@ -19,15 +19,12 @@ main = do
   void . forkIO . forever $ do
     writeChan actionQueue ()
     threadDelay 1000000
-  -- render in a loop
-  animate actionQueue state
+  animate  -- requestAnimationFrame loop
   -- fork event handler
   void $ forkIO $ queueHandler state actionQueue
 
-animate :: Chan () -> MVar () -> IO ()
-animate q sVar = do
-  s <- readMVar sVar
-  void $ inAnimationFrame ContinueAsync $ animate q sVar
+animate :: IO ()
+animate = void $ inAnimationFrame ContinueAsync animate
 
 -- | A helper function to hook an event handler to an event queue
 queueHandler :: MVar s -> Chan e -> IO ()
