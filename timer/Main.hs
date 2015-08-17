@@ -46,7 +46,7 @@ main = do
   -- bind callbacks that fire events
   traverse_ (uncurry $ onclick doc eventQueue) buttons
   -- render in a loop
-  void $ inAnimationFrame ContinueAsync $ render state
+  animate $ render state
   -- fork a thread for the event handler
   _ <- forkIO $ queueHandler state eventQueue handleEvent
   -- register a timer for the countdown, interval in ms
@@ -165,3 +165,7 @@ sPerDay = 24 * sPerHour
 
 initialHtml :: ByteString
 initialHtml = $(embedFile "timer/inner.html")
+
+-- | render in a loop, using @requestAnimationFrame@
+animate :: IO () -> IO ()
+animate act = void $ inAnimationFrame ContinueAsync (act >> animate act)

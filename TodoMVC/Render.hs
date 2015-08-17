@@ -13,7 +13,7 @@ import           GHCJS.Types
 import           GHCJS.VDOM
 import           GHCJS.VDOM.Attribute as A
 import           GHCJS.VDOM.Element   as E
-import           GHCJS.VDOM.Event     as V
+import           GHCJS.VDOM.Event     as V hiding (input, value)
 
 import           Data.Maybe
 import           Data.Semigroup       (Semigroup (..))
