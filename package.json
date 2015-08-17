@@ -1,0 +1,20 @@
+{
+  "name": "gooey",
+  "version": "0.1.0",
+  "description": "Demonstrations of GHCJS usage",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bergey/gooey.git"
+  },
+  "author": "Daniel Bergey",
+  "license": "BSD3",
+  "bugs": {
+    "url": "https://github.com/bergey/gooey/issues"
+  }
+}

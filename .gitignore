@@ -16,3 +16,5 @@ TAGS
 /cabal.config
 /.cabal-sandbox/
 /Setup.hs
+node_modules/
+/npm-debug.log
