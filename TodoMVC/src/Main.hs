@@ -3,26 +3,18 @@
 
 module Main where
 
-import qualified Data.JSString                 as S
-import           GHCJS.DOM
-import           GHCJS.Foreign.Callback
-import           GHCJS.Foreign.QQ
-import           GHCJS.VDOM
-import qualified GHCJS.VDOM.Element            as E
-import           JavaScript.Web.AnimationFrame
+import           GHCJS.Foreign.Callback        (OnBlocked (..))
+import           GHCJS.Foreign.QQ              (js, js_)
+import           JavaScript.Web.AnimationFrame (inAnimationFrame)
 
 import           GHCJS.VDOM
-import           GHCJS.VDOM.Element            (input)
+import qualified GHCJS.VDOM.Element            as E
 import           GHCJS.VDOM.Event              (keypress)
 
 import           Control.Concurrent
 import           Control.Concurrent.Chan
 import           Control.Concurrent.MVar
-import           Control.Monad                 hiding (sequence_)
-import           Data.Char
-import           Data.List
-import           Data.Maybe
-import           Data.Semigroup                ((<>))
+import           Control.Monad                 (void)
 
 main :: IO ()
 main = do
@@ -58,7 +50,7 @@ queueHandler s q h = do
   queueHandler s q h
 
 render :: (() -> IO ()) -> VNode
-render raise = input [keypress (raise . entryHandler)] ()
+render raise = E.input [keypress (raise . entryHandler)] ()
 
 entryHandler :: a -> ()
 entryHandler ev = ()
