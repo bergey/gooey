@@ -27,30 +27,21 @@ main = do
   m <- mount root (E.div () ())
   -- render in a loop
   animate m actionQueue state
-
   -- fork event handler
-  void $ forkIO $ queueHandler state actionQueue update
+  void $ forkIO $ queueHandler state actionQueue
 
--- It would be easy to factor out State from this, and take @render@
--- as an argument.
 animate :: VMount -> Chan () -> MVar () -> IO ()
 animate m q sVar = do
   s <- readMVar sVar
-  p <- diff m (render (writeChan q))
+  p <- diff m (render (writeChan q ()))
   void $ inAnimationFrame ContinueAsync $ patch m p >> animate m q sVar
 
-update :: () -> () -> ()
-update = const id
-
 -- | A helper function to hook an event handler to an event queue
-queueHandler :: MVar s -> Chan e -> (e -> s -> s) -> IO ()
-queueHandler s q h = do
+queueHandler :: MVar s -> Chan e -> IO ()
+queueHandler s q = do
   ev <- readChan q
-  modifyMVar_ s (return . h ev)
-  queueHandler s q h
+  modifyMVar_ s return
+  queueHandler s q
 
-render :: (() -> IO ()) -> VNode
-render raise = E.input [keypress (raise . entryHandler)] ()
-
-entryHandler :: a -> ()
-entryHandler ev = ()
+render :: (IO ()) -> VNode
+render raise = E.input [keypress (const raise)] ()
