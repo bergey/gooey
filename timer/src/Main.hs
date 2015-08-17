@@ -164,7 +164,7 @@ sPerHour = 60 * sPerMinute
 sPerDay = 24 * sPerHour
 
 initialHtml :: ByteString
-initialHtml = $(embedFile "timer/inner.html")
+initialHtml = $(embedFile "inner.html")
 
 -- | render in a loop, using @requestAnimationFrame@
 animate :: IO () -> IO ()

@@ -31,4 +31,4 @@ main = do
 
 
 initialHtml :: ByteString
-initialHtml = $(embedFile "embed/inner.html")
+initialHtml = $(embedFile "inner.html")
