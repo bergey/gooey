@@ -15,4 +15,4 @@ TAGS
 /cabal.sandbox.config
 /cabal.config
 /.cabal-sandbox/
-/Setup.hs
+Setup.hs
