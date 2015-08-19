@@ -17,7 +17,7 @@ main = do
   body <- select "body"
   append initialHtml body
   ctx <- getContextById "dia"
-  renderDia Canvas (CanvasOptions (Dims 200 200) ctx) dia
+  renderDia Canvas (CanvasOptions (dims2D 200 200) ctx) dia
 
 getContextById :: T.Text -> IO C.Context
 getContextById name =
@@ -27,5 +27,5 @@ getContextById name =
 initialHtml :: T.Text
 initialHtml = "<canvas id=\"dia\" width=\"200\" height=\"200\"></canvas>"
 
-dia :: Diagram Canvas R2
+dia :: Diagram Canvas
 dia = triangle 1 # fc blue <> square 1 # fc red
