@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gooey by bergey</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Gooey</h1>
+        <p>GHCJS Examples</p>
+
+        <p class="view"><a href="https://github.com/bergey/gooey">View the Project on GitHub <small>bergey/gooey</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/bergey/gooey/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bergey/gooey/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bergey/gooey">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="ghcjs-examples" class="anchor" href="#ghcjs-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>GHCJS Examples</h1>
+
+<h2>
+<a id="hello" class="anchor" href="#hello" aria-hidden="true"><span class="octicon octicon-link"></span></a>hello</h2>
+
+<p>Hello World example, uses the bare minimum of functions from</p>
+
+<h2>
+<a id="ghcjs-dom-to-get-text-into-the-browser-window" class="anchor" href="#ghcjs-dom-to-get-text-into-the-browser-window" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>ghcjs-dom</code> to get text into the browser window.</h2>
+
+<h2>
+<a id="embed" class="anchor" href="#embed" aria-hidden="true"><span class="octicon octicon-link"></span></a>embed</h2>
+
+<p>Only slightly more elaborate than =hello=, sets a large chunk of
+static HTML, and then selects several elements by id.</p>
+
+<h2>
+<a id="hamlet" class="anchor" href="#hamlet" aria-hidden="true"><span class="octicon octicon-link"></span></a>hamlet</h2>
+
+<p>Use <code>hamlet</code> and <code>blaze-html</code> to create the inner HTML content.</p>
+
+<h2>
+<a id="echo" class="anchor" href="#echo" aria-hidden="true"><span class="octicon octicon-link"></span></a>echo</h2>
+
+<p>Use <code>ghcjs-dom</code> to read from an input field and echo the value to a paragraph..</p>
+
+<h2>
+<a id="echo-button" class="anchor" href="#echo-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>echo-button</h2>
+
+<p>Like <em>echo</em>, but register a callback on a button, and only update the paragraph when the button is pressed.  This is the simplest example with a callback.</p>
+
+<h2>
+<a id="timer" class="anchor" href="#timer" aria-hidden="true"><span class="octicon octicon-link"></span></a>timer</h2>
+
+<p>A countdown timer using an <code>MVar</code> event queue to tie the knot.  Callbacks on DOM elements add events to the queue.  A single Haskell thread pops events from the queue and updates the (global) state.  A <code>render</code> function is called in a loop by <code>requestAnimationFrame</code> and updates the DOM based on the global state.  This is the simplest example with an event queue.</p>
+
+<h2>
+<a id="diagrams-minimal" class="anchor" href="#diagrams-minimal" aria-hidden="true"><span class="octicon octicon-link"></span></a>diagrams-minimal</h2>
+
+<p>Uses <a href="https://github.com/ghcjs/diagrams-ghcjs">diagrams-ghcjs</a> and <a href="https://github.com/ghcjs/ghcjs-canvas">ghcjs-canvas</a> to render to a Canvas element.  Also uses <a href="https://github.com/ghcjs/ghcjs-jquery">ghcjs-jquery</a>to setup the initial DOM.  There's probably a better way without jquery, however.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bergey">bergey</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
