@@ -1,13 +1,13 @@
 GHCJS Examples
 ==============
 
-hello
+[hello](http://bergey.github.io/gooey/)
 -----
 
 Hello World example, uses the bare minimum of functions from `ghcjs-dom`
 to get text into the browser window.
 
-embed
+[embed](http://bergey.github.io/gooey/embed)
 -----
 
 Only slightly more elaborate than `hello`, sets a large chunk of static
@@ -16,18 +16,18 @@ HTML, and then selects several elements by id. The use of
 important. Both will disappear as I move to better libraries for
 constructing HTML.
 
-hamlet
+[hamlet](http://bergey.github.io/gooey/hamlet-static)
 ------
 
 Use `hamlet` and `blaze-html` to create the inner HTML content.
 
-echo
+[echo](http://bergey.github.io/gooey/echo)
 ----
 
 Use `ghcjs-dom` to read from an input field and echo the value to a
 paragraph..
 
-echo-button
+[echo-button](http://bergey.github.io/gooey/echo-button)
 -----------
 
 Like **echo**, but register a callback on a button, and only update the
@@ -44,7 +44,7 @@ function is called in a loop by `requestAnimationFrame` and updates the
 DOM based on the global state. This is the simplest example with an
 event queue.
 
-diagrams-minimal
+[diagrams-minimal](http://bergey.github.io/gooey/diagrams-minimal/)
 ----------------
 
 Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) and
