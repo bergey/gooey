@@ -5,15 +5,12 @@ module Main where
 import           GHCJS.DOM
 import           GHCJS.DOM.Document
 import           GHCJS.DOM.Element
-import           GHCJS.DOM.EventTarget
 import           GHCJS.DOM.EventTargetClosures
 import           GHCJS.DOM.HTMLElement
-import           GHCJS.DOM.HTMLInputElement    (getValue)
+import           GHCJS.DOM.HTMLInputElement    (htmlInputElementGetValue)
 import           GHCJS.DOM.Types               hiding (Event)
 import           GHCJS.Foreign
-import           GHCJS.Foreign.Callback
 import           GHCJS.Marshal
-import           JavaScript.Web.AnimationFrame
 
 import           Control.Applicative
 import           Control.Concurrent
@@ -22,13 +19,13 @@ import           Control.Monad                 hiding (sequence_)
 main :: IO ()
 main = do
   Just doc <- currentDocument
-  Just body <- getBody doc
-  setInnerHTML body $ Just initialHtml
-  Just input <- fmap castToHTMLInputElement <$> getElementById doc "in"
-  Just out <- fmap castToHTMLElement <$> getElementById doc "out"
+  Just body <- documentGetBody doc
+  htmlElementSetInnerHTML body $ initialHtml
+  Just input <- fmap castToHTMLInputElement <$> documentGetElementById doc "in"
+  Just out <- fmap castToHTMLElement <$> documentGetElementById doc "out"
   forever $ do
-    val <- getValue input :: IO (Maybe String)
-    setInnerText out val
+    val <- htmlInputElementGetValue input :: IO String
+    htmlElementSetInnerText out val
     threadDelay 500000
 
 initialHtml :: String

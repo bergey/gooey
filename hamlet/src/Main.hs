@@ -5,12 +5,9 @@
 
 module Main where
 
-import qualified Data.Text.Lazy                as TL
 import           GHCJS.DOM
 import           GHCJS.DOM.Document
-import           GHCJS.DOM.Element
 import           GHCJS.DOM.HTMLElement
-import           GHCJS.Foreign
 import           Text.Blaze.Html               (Html)
 import           Text.Blaze.Html.Renderer.Text (renderHtml)
 import           Text.Hamlet                   (shamlet)
@@ -18,16 +15,16 @@ import           Text.Hamlet                   (shamlet)
 main :: IO ()
 main = do
   Just doc <- currentDocument
-  Just body <- getBody doc
-  setInnerHTML body . Just . TL.unpack . renderHtml $ initialHtml
-  Just days <- (fmap . fmap) castToHTMLElement $ getElementById doc "dday"
-  setInnerText days $ Just "1"
-  Just hours <- (fmap . fmap) castToHTMLElement $ getElementById doc "dhour"
-  setInnerText hours $ Just "2"
-  Just minutes <- (fmap . fmap) castToHTMLElement $ getElementById doc "dmin"
-  setInnerText minutes $ Just "3"
-  Just seconds <- (fmap . fmap) castToHTMLElement $ getElementById doc "dsec"
-  setInnerText seconds $ Just "4"
+  Just body <- documentGetBody doc
+  htmlElementSetInnerHTML body $ renderHtml initialHtml
+  Just days <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dday"
+  htmlElementSetInnerText days "1"
+  Just hours <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dhour"
+  htmlElementSetInnerText hours "2"
+  Just minutes <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dmin"
+  htmlElementSetInnerText minutes "3"
+  Just seconds <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dsec"
+  htmlElementSetInnerText seconds "4"
 
 
 initialHtml :: Html

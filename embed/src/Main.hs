@@ -6,28 +6,26 @@ module Main where
 
 import           GHCJS.DOM
 import           GHCJS.DOM.Document
-import           GHCJS.DOM.Element
 import           GHCJS.DOM.HTMLElement
 
 import           Control.Applicative
 import           Data.ByteString       (ByteString)
 import           Data.FileEmbed
-import qualified Data.Text             as T
 import           Data.Text.Encoding
 
 main :: IO ()
 main = do
   Just doc <- currentDocument
-  Just body <- getBody doc
-  setInnerHTML body . Just . T.unpack . decodeUtf8 $ initialHtml
-  Just days <- (fmap . fmap) castToHTMLElement $ getElementById doc "dday"
-  setInnerText days $ Just "1"
-  Just hours <- (fmap . fmap) castToHTMLElement $ getElementById doc "dhour"
-  setInnerText hours $ Just "2"
-  Just minutes <- (fmap . fmap) castToHTMLElement $ getElementById doc "dmin"
-  setInnerText minutes $ Just "3"
-  Just seconds <- (fmap . fmap) castToHTMLElement $ getElementById doc "dsec"
-  setInnerText seconds $ Just "4"
+  Just body <- documentGetBody doc
+  htmlElementSetInnerHTML body $ decodeUtf8 initialHtml
+  Just days <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dday"
+  htmlElementSetInnerText days "1"
+  Just hours <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dhour"
+  htmlElementSetInnerText hours "2"
+  Just minutes <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dmin"
+  htmlElementSetInnerText minutes "3"
+  Just seconds <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dsec"
+  htmlElementSetInnerText seconds "4"
 
 
 initialHtml :: ByteString
