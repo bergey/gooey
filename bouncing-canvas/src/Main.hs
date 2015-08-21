@@ -38,11 +38,13 @@ type V2D = V2 Double
 
 main :: IO ()
 main = do
+  -- initialize MVar
   t0 <- now
+  state <- newMVar $ initialState t0
+  -- get Canvas context
   Just doc <- currentDocument
   Just body <- documentGetBody doc
   htmlElementSetInnerHTML body initialHtml
-  state <- newMVar $ initialState t0
   ctx <- getContextById doc "dia"
   forever $ do
     s <- takeMVar state
