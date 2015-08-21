@@ -50,13 +50,15 @@ render :: C.Context -> State -> IO ()
 render ctx s@(State{pos}) = do
   C.clearRect 0 0 200 200 ctx
   renderDia Canvas (CanvasOptions (dims2D 200 200) ctx) dia
-  print s
     where
       dia :: Diagram Canvas
       dia = circle 0.01 # translate pos # fc blue # clipped (square 1 # translate (V2 0.5 0.5))
 
 physics :: State -> IO State
-physics s = physics' s <$> now
+physics s = do
+  t <- now
+  print $ t - time s
+  return $ physics' s t
 
 physics' :: State -> Time -> State
 physics' s@(State { pos, velocity, time}) t = case collision s t of
