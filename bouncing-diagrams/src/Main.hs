@@ -26,6 +26,8 @@ data State = State
                , time     :: Time
                } deriving Show
 
+initialState t = State (V2 0.5 0.5) (V2 3e-4 2e-4) t
+
 type Time = Double -- ^ milliseconds
 type TimeDelta = Double
 type V2D = V2 Double
@@ -33,7 +35,7 @@ type V2D = V2 Double
 main :: IO ()
 main = do
   t0 <- now
-  state <- newMVar $ State (V2 0.5 0.5) (V2 5e-4 5e-4) t0
+  state <- newMVar $ initialState t0
   body <- select "body"
   append initialHtml body
   ctx <- getContextById "dia"
@@ -46,11 +48,12 @@ main = do
 
 render :: C.Context -> State -> IO ()
 render ctx s@(State{pos}) = do
+  C.clearRect 0 0 200 200 ctx
   renderDia Canvas (CanvasOptions (dims2D 200 200) ctx) dia
   print s
     where
       dia :: Diagram Canvas
-      dia = circle 0.01 # translate pos # fc blue <> square 1 # translate (V2 0.5 0.5)
+      dia = circle 0.01 # translate pos # fc blue # clipped (square 1 # translate (V2 0.5 0.5))
 
 physics :: State -> IO State
 physics s = physics' s <$> now
