@@ -1,17 +1,17 @@
-{-# LANGUAGE NamedFieldPuns    #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE NamedFieldPuns #-}
 
 module Main where
 
-import           JsImports               (now)
+import           JsImports                     (now)
 
-import           GHCJS.DOM               (currentDocument)
-import           GHCJS.DOM.Document      (documentGetBody,
-                                          documentGetElementById)
-import           GHCJS.DOM.HTMLElement   (htmlElementGetInnerHTML,
-                                          htmlElementSetInnerHTML)
-import           GHCJS.DOM.Types         (IsDocument, unElement)
-import qualified JavaScript.Canvas       as C
+import           GHCJS.DOM                     (currentDocument)
+import           GHCJS.DOM.Document            (documentGetBody,
+                                                documentGetElementById)
+import           GHCJS.DOM.EventTargetClosures
+import           GHCJS.DOM.HTMLElement         (htmlElementGetInnerHTML,
+                                                htmlElementSetInnerHTML)
+import           GHCJS.DOM.Types               (Element, IsDocument, unElement)
+import qualified JavaScript.Canvas             as C
 import           Linear
 
 import           GHCJS.Foreign
@@ -19,8 +19,8 @@ import           GHCJS.Types
 
 import           Control.Concurrent
 import           Control.Concurrent.MVar
-import           Control.Monad           hiding (sequence_)
-import           Data.Foldable           (minimumBy)
+import           Control.Monad                 hiding (sequence_)
+import           Data.Foldable                 (minimumBy)
 import           Data.Ord
 import           Data.Semigroup
 
@@ -45,7 +45,8 @@ main = do
   Just doc <- currentDocument
   Just body <- documentGetBody doc
   htmlElementSetInnerHTML body initialHtml
-  ctx <- getContextById doc "dia"
+  Just el <- documentGetElementById doc "dia"
+  ctx <- getContext el
   forever $ do
     s <- takeMVar state
     render ctx s
@@ -111,9 +112,8 @@ reflect West (V2 x y) = V2 (-x) y
 reflect North (V2 x y) = V2 x (-y)
 reflect South (V2 x y) = V2 x (-y)
 
-getContextById :: IsDocument self => self -> String -> IO C.Context
-getContextById doc name = do
-  Just el <- documentGetElementById doc name
+getContext :: Element -> IO C.Context
+getContext el = do
   C.getContext . castRef . unElement $ el
 
 initialHtml :: String
