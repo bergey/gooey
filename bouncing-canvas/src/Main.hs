@@ -5,10 +5,9 @@ module Main where
 
 import           JsImports               (now)
 
-import           Diagrams.Backend.GHCJS
-import           Diagrams.Prelude        hiding (Time, render)
 import qualified JavaScript.Canvas       as C
 import           JavaScript.JQuery       (append, select)
+import           Linear
 
 import           GHCJS.Foreign
 import           GHCJS.Types
@@ -18,6 +17,7 @@ import           Control.Concurrent.MVar
 import           Control.Monad           hiding (sequence_)
 import           Data.Foldable           (minimumBy)
 import           Data.Ord
+import           Data.Semigroup
 import qualified Data.Text               as T
 
 data State = State
@@ -49,10 +49,11 @@ main = do
 render :: C.Context -> State -> IO ()
 render ctx s@(State{pos}) = do
   C.clearRect 0 0 200 200 ctx
-  renderDia Canvas (CanvasOptions (dims2D 200 200) ctx) dia
+  C.beginPath ctx
+  circle pos
+  C.fill ctx
     where
-      dia :: Diagram Canvas
-      dia = circle 0.01 # translate pos # fc blue # clipped (square 1 # translate (V2 0.5 0.5))
+      circle (V2 x y) = C.arc (200*x) (200*y) 2 0 (2*pi) False ctx
 
 physics :: State -> IO State
 physics s = do
