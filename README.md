@@ -52,3 +52,10 @@ Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) and
 Canvas element. Also uses
 [ghcjs-jquery](https://github.com/ghcjs/ghcjs-jquery) to setup the
 initial DOM. There's probably a better way without jquery, however.
+
+##  [bouncing-canvas](http://bergey.github.io/gooey/bouncing-canvas/)
+Uses [ghcjs-canvas](https://github.com/ghcjs/ghcjs-canvas) to render a bouncing ball.
+
+##  [bouncing-diagrams](http://bergey.github.io/gooey/bouncing-diagrams/)
+Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) to render a bouncing ball.
+
