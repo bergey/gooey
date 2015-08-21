@@ -21,7 +21,7 @@ executable bouncing-canvas
   -- other-modules:       
   other-extensions:    JavaScriptFFI, CPP, OverloadedStrings
   build-depends:       base >=4.7 && <4.9
-                     , ghcjs-dom
+                     , ghcjs-dom < 0.2
                      , ghcjs-canvas
                      , ghcjs-base
                      , linear
