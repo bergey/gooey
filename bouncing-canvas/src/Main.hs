@@ -5,8 +5,13 @@ module Main where
 
 import           JsImports               (now)
 
+import           GHCJS.DOM               (currentDocument)
+import           GHCJS.DOM.Document      (documentGetBody,
+                                          documentGetElementById)
+import           GHCJS.DOM.HTMLElement   (htmlElementGetInnerHTML,
+                                          htmlElementSetInnerHTML)
+import           GHCJS.DOM.Types         (IsDocument, unElement)
 import qualified JavaScript.Canvas       as C
-import           JavaScript.JQuery       (append, select)
 import           Linear
 
 import           GHCJS.Foreign
@@ -18,7 +23,6 @@ import           Control.Monad           hiding (sequence_)
 import           Data.Foldable           (minimumBy)
 import           Data.Ord
 import           Data.Semigroup
-import qualified Data.Text               as T
 
 data State = State
                { pos      :: V2D
@@ -35,10 +39,11 @@ type V2D = V2 Double
 main :: IO ()
 main = do
   t0 <- now
+  Just doc <- currentDocument
+  Just body <- documentGetBody doc
+  htmlElementSetInnerHTML body initialHtml
   state <- newMVar $ initialState t0
-  body <- select "body"
-  append initialHtml body
-  ctx <- getContextById "dia"
+  ctx <- getContextById doc "dia"
   forever $ do
     s <- takeMVar state
     render ctx s
@@ -104,10 +109,10 @@ reflect West (V2 x y) = V2 (-x) y
 reflect North (V2 x y) = V2 x (-y)
 reflect South (V2 x y) = V2 x (-y)
 
-getContextById :: T.Text -> IO C.Context
-getContextById name =
-  C.getContext =<< indexArray 0 . castRef =<< select name' where
-    name' = "#" <> name
+getContextById :: IsDocument self => self -> String -> IO C.Context
+getContextById doc name = do
+  Just el <- documentGetElementById doc name
+  C.getContext . castRef . unElement $ el
 
-initialHtml :: T.Text
+initialHtml :: String
 initialHtml = "<canvas id=\"dia\" width=\"200\" height=\"200\" style=\"border: 1px solid\"></canvas>"
