@@ -1,0 +1,215 @@
+code size summary per package:
+
+adjunctions-4.2.1:       311
+base:                    505297
+colour-2.3.3:            2665
+containers-0.5.6.2:      38776
+diagrams-core-1.3.0.2:   374690
+diagrams-ghcjs-0.2.0:    66124
+diagrams-lib-1.3.0.3:    562198
+diagrams-solve-0.1:      54804
+distributive-0.4.4:      323
+dual-tree-0.2.0.6:       11875
+fingertree-0.1.1.0:      53324
+ghc-prim:                21122
+ghcjs-base-0.1.0.0:      161
+ghcjs-prim-0.1.0.0:      8150
+integer-gmp:             34024
+intervals-0.7.1:         14192
+lens-4.12.3:             20523
+linear-1.19.1.3:         44165
+main:                    35682
+monoid-extras-0.4.0.1:   38796
+semigroups-0.16.2.2:     35147
+text-1.2.0.3:            21365
+transformers-0.4.3.0:    852
+unordered-containers-0.2.5.1:4962
+
+
+code size per module:
+
+adjunctions-4.2.1
+    Data.Functor.Rep:                   311
+
+base
+    Control.Applicative:                2947
+    Control.Exception.Base:             6924
+    Data.Either:                        397
+    Data.Foldable:                      454
+    Data.List:                          11409
+    Data.Maybe:                         1818
+    Data.Monoid:                        7243
+    Data.Traversable:                   466
+    Data.Tuple:                         167
+    Data.Typeable:                      891
+    Data.Typeable.Internal:             6040
+    Foreign.C.Error:                    9662
+    Foreign.Marshal.Alloc:              149
+    Foreign.Marshal.Array:              2517
+    Foreign.Storable:                   10287
+    GHC.Arr:                            3637
+    GHC.Base:                           3463
+    GHC.Conc.Sync:                      4685
+    GHC.Enum:                           9888
+    GHC.Err:                            218
+    GHC.Exception:                      8654
+    GHC.Fingerprint:                    2027
+    GHC.Fingerprint.Type:               1062
+    GHC.Float:                          106480
+    GHC.Float.ConversionUtils:          3383
+    GHC.Foreign:                        12272
+    GHC.ForeignPtr:                     1501
+    GHC.IO:                             3660
+    GHC.IO.Buffer:                      1276
+    GHC.IO.BufferedIO:                  864
+    GHC.IO.Device:                      1297
+    GHC.IO.Encoding:                    1030
+    GHC.IO.Encoding.Failure:            396
+    GHC.IO.Encoding.Latin1:             1863
+    GHC.IO.Encoding.Types:              1032
+    GHC.IO.Encoding.UTF8:               61490
+    GHC.IO.Exception:                   19914
+    GHC.IO.FD:                          35667
+    GHC.IO.Handle:                      458
+    GHC.IO.Handle.FD:                   6735
+    GHC.IO.Handle.Internals:            34633
+    GHC.IO.Handle.Text:                 16048
+    GHC.IO.Handle.Types:                3770
+    GHC.Int:                            802
+    GHC.List:                           16335
+    GHC.MVar:                           188
+    GHC.Num:                            3710
+    GHC.Ptr:                            408
+    GHC.Real:                           30336
+    GHC.ST:                             186
+    GHC.STRef:                          194
+    GHC.Show:                           15968
+    GHC.Storable:                       1084
+    GHC.TopHandler:                     10202
+    GHC.Word:                           965
+    System.Posix.Internals:             16145
+
+colour-2.3.3
+    Data.Colour.Internal:               1792
+    Data.Colour.RGB:                    873
+
+containers-0.5.6.2
+    Data.Map.Base:                      37815
+    Data.Tree:                          961
+
+diagrams-core-1.3.0.2
+    Diagrams.Core.Compile:              25631
+    Diagrams.Core.Envelope:             20925
+    Diagrams.Core.Measure:              541
+    Diagrams.Core.Names:                7261
+    Diagrams.Core.Query:                3938
+    Diagrams.Core.Style:                58481
+    Diagrams.Core.Trace:                22779
+    Diagrams.Core.Transform:            28234
+    Diagrams.Core.Types:                205995
+    Diagrams.Core.V:                    905
+
+diagrams-ghcjs-0.2.0
+    Diagrams.Backend.GHCJS:             47197
+    Graphics.Rendering.GHCJS:           18927
+
+diagrams-lib-1.3.0.3
+    Diagrams.Angle:                     11280
+    Diagrams.Attributes:                19654
+    Diagrams.BoundingBox:               7419
+    Diagrams.Located:                   2088
+    Diagrams.Parametric:                1
+    Diagrams.Path:                      10585
+    Diagrams.Points:                    3859
+    Diagrams.Segment:                   94260
+    Diagrams.Size:                      19402
+    Diagrams.Trail:                     55431
+    Diagrams.TrailLike:                 724
+    Diagrams.TwoD.Adjust:               11314
+    Diagrams.TwoD.Arc:                  23007
+    Diagrams.TwoD.Attributes:           18778
+    Diagrams.TwoD.Ellipse:              8126
+    Diagrams.TwoD.Path:                 85635
+    Diagrams.TwoD.Points:               9018
+    Diagrams.TwoD.Polygons:             64824
+    Diagrams.TwoD.Segment:              89125
+    Diagrams.TwoD.Segment.Bernstein:    5012
+    Diagrams.TwoD.Shapes:               7341
+    Diagrams.TwoD.Transform:            13765
+    Diagrams.TwoD.Vector:               1549
+    Diagrams.Util:                      1
+
+diagrams-solve-0.1
+    Diagrams.Solve.Polynomial:          54804
+
+distributive-0.4.4
+    Data.Distributive:                  323
+
+dual-tree-0.2.0.6
+    Data.Tree.DUAL.Internal:            11875
+
+fingertree-0.1.1.0
+    Data.FingerTree:                    53324
+
+ghc-prim
+    GHC.CString:                        4537
+    GHC.Classes:                        14309
+    GHC.IntWord64:                      146
+    GHC.Tuple:                          802
+    GHC.Types:                          1328
+
+ghcjs-base-0.1.0.0
+    GHCJS.Marshal:                      161
+
+ghcjs-prim-0.1.0.0
+    GHCJS.Prim:                         7374
+    GHCJS.Prim.Internal:                776
+
+integer-gmp
+    GHC.Integer.GMP.Prim:               333
+    GHC.Integer.Logarithms.Internals:   5322
+    GHC.Integer.Type:                   28369
+
+intervals-0.7.1
+    Numeric.Interval.Kaucher:           14192
+
+lens-4.12.3
+    Control.Lens.Internal.Indexed:      7827
+    Data.Data.Lens:                     12696
+
+linear-1.19.1.3
+    Linear.Affine:                      308
+    Linear.Metric:                      1295
+    Linear.V2:                          37208
+    Linear.Vector:                      5354
+
+main
+    JsImports:                          163
+    Main:                               35519
+
+monoid-extras-0.4.0.1
+    Data.Monoid.Coproduct:              8230
+    Data.Monoid.Deletable:              20834
+    Data.Monoid.Recommend:              8983
+    Data.Monoid.WithSemigroup:          749
+
+semigroups-0.16.2.2
+    Data.List.NonEmpty:                 284
+    Data.Semigroup:                     34863
+
+text-1.2.0.3
+    Data.Text:                          19393
+    Data.Text.Array:                    820
+    Data.Text.Internal:                 1152
+
+transformers-0.4.3.0
+    Data.Functor.Identity:              852
+
+unordered-containers-0.2.5.1
+    Data.HashMap.Array:                 1256
+    Data.HashMap.Base:                  3706
+
+
+
+packed metadata: 334492
+
