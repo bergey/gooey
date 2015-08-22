@@ -1,28 +1,32 @@
-{-# LANGUAGE NamedFieldPuns    #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE NamedFieldPuns #-}
 
 module Main where
 
-import           JsImports               (now)
+import           JsImports                     (now)
 
 import           Diagrams.Backend.GHCJS
-import           Diagrams.Prelude        hiding (Time, render)
-import           GHCJS.DOM               (currentDocument)
-import           GHCJS.DOM.Document      (documentGetBody,
-                                          documentGetElementById)
-import           GHCJS.DOM.HTMLElement   (htmlElementGetInnerHTML,
-                                          htmlElementSetInnerHTML)
-import           GHCJS.DOM.Types         (IsDocument, unElement)
-import qualified JavaScript.Canvas       as C
-import qualified JavaScript.Canvas       as C
+import           Diagrams.Prelude              hiding (Time, render)
+import           GHCJS.DOM                     (currentDocument, currentWindow)
+import           GHCJS.DOM.Document            (documentGetBody,
+                                                documentGetElementById)
+import           GHCJS.DOM.Element             (elementGetOffsetLeft,
+                                                elementGetOffsetTop)
+import           GHCJS.DOM.EventTargetClosures
+import           GHCJS.DOM.HTMLElement         (htmlElementGetInnerHTML,
+                                                htmlElementSetInnerHTML)
+import           GHCJS.DOM.Types               (Element, IsDocument, MouseEvent,
+                                                unElement)
+import           GHCJS.DOM.UIEvent             (uiEventGetPageX,
+                                                uiEventGetPageY)
+import qualified JavaScript.Canvas             as C
 
 import           GHCJS.Foreign
 import           GHCJS.Types
 
 import           Control.Concurrent
 import           Control.Concurrent.MVar
-import           Control.Monad           hiding (sequence_)
-import           Data.Foldable           (minimumBy)
+import           Control.Monad                 hiding (sequence_)
+import           Data.Foldable                 (minimumBy)
 import           Data.Ord
 
 data State = State
@@ -46,7 +50,9 @@ main = do
   Just doc <- currentDocument
   Just body <- documentGetBody doc
   htmlElementSetInnerHTML body initialHtml
-  ctx <- getContextById doc "dia"
+  Just canvas <- documentGetElementById doc "dia"
+  ctx <- getContext canvas
+  eventTargetAddEventListener canvas "click" False $ newBall state
   forever $ do
     s <- takeMVar state
     render ctx s
@@ -65,7 +71,7 @@ render ctx s@(State{pos}) = do
 physics :: State -> IO State
 physics s = do
   t <- now
-  print $ t - time s
+  -- print $ t - time s
   return $ physics' s t
 
 physics' :: State -> Time -> State
@@ -77,6 +83,17 @@ physics' s@(State { pos, velocity, time}) t = case collision s t of
       -- tCol is Δt from last step to collision
       v' = foldr reflect velocity $ map fst cs
       pos2 = pos + tCol *^ velocity + (t - time - tCol) *^ v'
+
+newBall :: MVar State -> Element -> MouseEvent -> IO ()
+newBall mstate canvas ev = do
+    Just win <- currentWindow
+    x <- fromIntegral <$> uiEventGetPageX ev
+    y <- fromIntegral <$> uiEventGetPageY ev
+    x0 <- elementGetOffsetLeft canvas
+    y0 <-  elementGetOffsetTop canvas
+    let x' = (x - x0) / 200
+    let y' = 1 - (y - y0) / 200
+    modifyMVar_ mstate (\s -> return $ s {pos = V2 x' y'})
 
 data Edge = East | West | North | South
 
@@ -111,9 +128,8 @@ reflect West (V2 x y) = V2 (-x) y
 reflect North (V2 x y) = V2 x (-y)
 reflect South (V2 x y) = V2 x (-y)
 
-getContextById :: IsDocument self => self -> String -> IO C.Context
-getContextById doc name = do
-  Just el <- documentGetElementById doc name
+getContext :: Element -> IO C.Context
+getContext el = do
   C.getContext . castRef . unElement $ el
 
 initialHtml :: String

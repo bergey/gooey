@@ -54,8 +54,12 @@ Canvas element. Also uses
 initial DOM. There's probably a better way without jquery, however.
 
 ##  [bouncing-canvas](http://bergey.github.io/gooey/bouncing-canvas/)
-Uses [ghcjs-canvas](https://github.com/ghcjs/ghcjs-canvas) to render a bouncing ball.
+
+Uses [ghcjs-canvas](https://github.com/ghcjs/ghcjs-canvas) to render a
+bouncing ball.  Click in the canvas to move the ball to that point.
 
 ##  [bouncing-diagrams](http://bergey.github.io/gooey/bouncing-diagrams/)
-Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) to render a bouncing ball.
 
+Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) to
+render a bouncing ball.  Click in the canvas to move the ball to that
+point.
