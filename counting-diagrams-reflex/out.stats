@@ -7,7 +7,7 @@ conta_5w3UY4chXx62LVUOUrXeRm:121467
 contr_4JjF2kyYShP51PZHQyk4NO:873
 depen_3ZazWrAF611CC0pGA27xUj:2873
 depen_GZFfxs8A7WS3jvJthZg6p3:47741
-diagr_2UPQF2Q4UCE94iKIlI53HQ:317384
+diagr_2UPQF2Q4UCE94iKIlI53HQ:317406
 diagr_340U1jctLyq7RwCEcoHxRU:47036
 diagr_4qZFHfjIikf2kKVSP6MM5k:61489
 diagr_7pdM6K5PjGZ9r6P0OQ2vFc:438300
@@ -23,7 +23,7 @@ integer-gmp:             41200
 inter_LYpe7ERaFPEDFpOPS1YSJ2:14325
 lens_01tQLkFxjx11nlaXxw6lyH:14314
 linea_2mw2v6JWw6MCVbQN8FIhOQ:39346
-main:                    70083
+main:                    71763
 monoi_1Va6ClJJdrw7P2QUzNCTUQ:20882
 profu_3iaivTEfu6M9bz10QVRO0t:1014
 refle_6svHQd4VMty0WaQ1OA6CNx:265127
@@ -134,7 +134,7 @@ diagr_2UPQF2Q4UCE94iKIlI53HQ
     Diagrams.Core.Style:                57461
     Diagrams.Core.Trace:                24790
     Diagrams.Core.Transform:            22977
-    Diagrams.Core.Types:                147925
+    Diagrams.Core.Types:                147947
     Diagrams.Core.V:                    1328
 
 diagr_340U1jctLyq7RwCEcoHxRU
@@ -224,7 +224,7 @@ linea_2mw2v6JWw6MCVbQN8FIhOQ
     Linear.Vector:                      5264
 
 main
-    Main:                               70083
+    Main:                               71763
 
 monoi_1Va6ClJJdrw7P2QUzNCTUQ
     Data.Monoid.Coproduct:              7678
@@ -272,5 +272,5 @@ unord_BRSkrYxrHRX1jelhZaE4Da
 
 
 
-packed metadata: 514445
+packed metadata: 514690
 
