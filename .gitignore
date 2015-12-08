@@ -18,3 +18,4 @@ cabal.config
 Setup.hs
 .\#*
 \#*
+.stack-work/
