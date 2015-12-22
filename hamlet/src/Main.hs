@@ -5,26 +5,28 @@
 
 module Main where
 
-import           GHCJS.DOM
-import           GHCJS.DOM.Document
-import           GHCJS.DOM.HTMLElement
 import           Text.Blaze.Html               (Html)
 import           Text.Blaze.Html.Renderer.Text (renderHtml)
 import           Text.Hamlet                   (shamlet)
 
+import           Data.JSString.Text
+import           GHCJS.DOM
+import           GHCJS.DOM.Document
+import           GHCJS.DOM.Element
+
 main :: IO ()
 main = do
   Just doc <- currentDocument
-  Just body <- documentGetBody doc
-  htmlElementSetInnerHTML body $ renderHtml initialHtml
-  Just days <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dday"
-  htmlElementSetInnerText days "1"
-  Just hours <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dhour"
-  htmlElementSetInnerText hours "2"
-  Just minutes <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dmin"
-  htmlElementSetInnerText minutes "3"
-  Just seconds <- (fmap . fmap) castToHTMLElement $ documentGetElementById doc "dsec"
-  htmlElementSetInnerText seconds "4"
+  Just body <- getBody doc
+  setInnerHTML body . Just . lazyTextToJSString $ renderHtml initialHtml
+  Just days <- getElementById doc "dday"
+  setInnerHTML days $ Just "1"
+  Just hours <- getElementById doc "dhour"
+  setInnerHTML hours $ Just "2"
+  Just minutes <- getElementById doc "dmin"
+  setInnerHTML minutes $ Just "3"
+  Just seconds <- getElementById doc "dsec"
+  setInnerHTML seconds $ Just "4"
 
 
 initialHtml :: Html
