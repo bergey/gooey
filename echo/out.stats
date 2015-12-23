@@ -1,77 +1,90 @@
 code size summary per package:
 
-base:                    247501
-ghc-prim:                3482
-ghcjs-dom-0.1.1.3:       660
-ghcjs-prim-0.1.0.0:      8586
-integer-gmp:             1995
-main:                    3917
+base:                    241472
+ghc-prim:                3321
+ghcjs_B7KLFJ07Vte3zPHAgRIBTb:10881
+ghcjs_D7BYGeMTlMGF2My8KZzKUS:14479
+ghcjs_Kc7TQ2cEDg1F5e5cgY2Vuk:9584
+integer-gmp:             1925
+main:                    6932
+trans_KzbnBSIEqPI2eU1Inn4mzm:550
 
 
 code size per module:
 
 base
-    Control.Exception.Base:             2839
-    Data.Maybe:                         269
-    Data.Typeable:                      891
-    Data.Typeable.Internal:             1372
-    Foreign.C.Error:                    9662
-    Foreign.Marshal.Alloc:              149
-    Foreign.Marshal.Array:              2517
+    Control.Exception.Base:             2721
+    Data.Maybe:                         173
+    Data.Typeable:                      885
+    Data.Typeable.Internal:             1418
+    Foreign.C.Error:                    9812
+    Foreign.Marshal.Alloc:              375
+    Foreign.Marshal.Array:              2038
     Foreign.Storable:                   2680
-    GHC.Base:                           2692
-    GHC.Conc.Sync:                      4685
+    GHC.Base:                           4922
+    GHC.Conc.Sync:                      4451
     GHC.Enum:                           189
     GHC.Err:                            218
-    GHC.Exception:                      2930
-    GHC.Foreign:                        12272
+    GHC.Exception:                      2991
+    GHC.Foreign:                        12136
     GHC.ForeignPtr:                     1265
-    GHC.IO:                             3660
+    GHC.IO:                             3605
     GHC.IO.Buffer:                      1276
     GHC.IO.BufferedIO:                  864
     GHC.IO.Device:                      1297
     GHC.IO.Encoding:                    1030
-    GHC.IO.Encoding.Failure:            396
+    GHC.IO.Encoding.Failure:            724
     GHC.IO.Encoding.Types:              1032
-    GHC.IO.Encoding.UTF8:               61490
-    GHC.IO.Exception:                   17743
-    GHC.IO.FD:                          35667
-    GHC.IO.Handle:                      458
-    GHC.IO.Handle.FD:                   6735
-    GHC.IO.Handle.Internals:            26766
-    GHC.IO.Handle.Types:                3507
+    GHC.IO.Encoding.UTF8:               61149
+    GHC.IO.Exception:                   17125
+    GHC.IO.FD:                          37215
+    GHC.IO.Handle:                      416
+    GHC.IO.Handle.FD:                   6981
+    GHC.IO.Handle.Internals:            27136
+    GHC.IO.Handle.Types:                3571
     GHC.Int:                            802
-    GHC.List:                           1183
+    GHC.List:                           356
     GHC.MVar:                           188
     GHC.Ptr:                            188
     GHC.STRef:                          194
-    GHC.Show:                           10669
+    GHC.Show:                           2191
     GHC.Storable:                       1084
-    GHC.TopHandler:                     10202
+    GHC.TopHandler:                     10349
     GHC.Word:                           350
-    System.Posix.Internals:             16090
+    System.Posix.Internals:             16075
 
 ghc-prim
     GHC.CString:                        1876
     GHC.IntWord64:                      146
     GHC.Tuple:                          542
-    GHC.Types:                          918
+    GHC.Types:                          757
 
-ghcjs-dom-0.1.1.3
-    GHCJS.DOM.Types:                    660
+ghcjs_B7KLFJ07Vte3zPHAgRIBTb
+    GHCJS.Prim:                         6475
+    GHCJS.Prim.Internal:                4406
 
-ghcjs-prim-0.1.0.0
-    GHCJS.Prim:                         7810
-    GHCJS.Prim.Internal:                776
+ghcjs_D7BYGeMTlMGF2My8KZzKUS
+    GHCJS.DOM:                          457
+    GHCJS.DOM.JSFFI.Generated.Document: 2071
+    GHCJS.DOM.JSFFI.Generated.HTMLInputElement:993
+    GHCJS.DOM.Types:                    10958
+
+ghcjs_Kc7TQ2cEDg1F5e5cgY2Vuk
+    GHCJS.Marshal:                      7041
+    GHCJS.Marshal.Internal:             1826
+    GHCJS.Marshal.Pure:                 717
 
 integer-gmp
     GHC.Integer.GMP.Prim:               172
-    GHC.Integer.Type:                   1823
+    GHC.Integer.Type:                   1753
 
 main
-    Main:                               3917
+    Main:                               6932
+
+trans_KzbnBSIEqPI2eU1Inn4mzm
+    Control.Monad.IO.Class:             550
 
 
 
-packed metadata: 58397
+packed metadata: 68489
 
