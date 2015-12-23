@@ -14,9 +14,11 @@ import           GHCJS.DOM.EventTarget
 import           GHCJS.DOM.EventTargetClosures
 import           GHCJS.DOM.HTMLElement
 import           GHCJS.DOM.Types               hiding (Event)
+import           GHCJS.DOM.WindowTimers        as WT
 import           GHCJS.Foreign
 import           GHCJS.Foreign.Callback
 import           GHCJS.Marshal
+import           GHCJS.Types
 import           JavaScript.Web.AnimationFrame
 
 import           Control.Applicative
@@ -50,7 +52,7 @@ main = do
   -- fork a thread for the event handler
   _ <- forkIO $ queueHandler state eventQueue handleEvent
   -- register a timer for the countdown, interval in ms
-  void $ setInterval (timer eventQueue) 500
+  void $ Main.setInterval (timer eventQueue) 500
 
 data AppState = AppState
                 Int -- ^ Seconds at which timer started
@@ -73,8 +75,8 @@ data Event
 data Step = Up | Down
           deriving Show
 
-render :: MVar AppState -> IO ()
-render sVar = do
+render :: MVar AppState -> Double -> IO ()
+render sVar _t = do
   Just doc <- currentDocument
   AppState s0 t0 t _ <- readMVar sVar
   let ids = ["dday", "dhour", "dmin", "dsec"]
@@ -155,8 +157,9 @@ queueHandler s q h = do
 
 setInterval :: IO () -> Int -> IO Int
 setInterval act t = do
-  cb <- toJSRef =<< syncCallback ContinueAsync act
-  js_setInterval cb t
+  wt <- windowTimers
+  cb <- jsval <$> syncCallback ContinueAsync act
+  WT.setInterval wt cb t
 
 sPerMinute, sPerHour, sPerDay :: Int
 sPerMinute = 60
@@ -167,5 +170,5 @@ initialHtml :: ByteString
 initialHtml = $(embedFile "inner.html")
 
 -- | render in a loop, using @requestAnimationFrame@
-animate :: IO () -> IO ()
-animate act = void $ inAnimationFrame ContinueAsync (act >> animate act)
+animate :: (Double -> IO ()) -> IO ()
+animate act = void $ inAnimationFrame ContinueAsync (\t -> act t >> animate act)
