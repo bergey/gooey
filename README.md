@@ -49,9 +49,7 @@ event queue.
 
 Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) and
 [ghcjs-canvas](https://github.com/ghcjs/ghcjs-canvas) to render to a
-Canvas element. Also uses
-[ghcjs-jquery](https://github.com/ghcjs/ghcjs-jquery) to setup the
-initial DOM. There's probably a better way without jquery, however.
+Canvas element.
 
 ##  [bouncing-canvas](http://bergey.github.io/gooey/bouncing-canvas/)
 
