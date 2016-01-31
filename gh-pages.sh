@@ -1,4 +1,5 @@
 set -e
+set -x
 for project in "$@"; do
     if ! git diff --quiet
     then
