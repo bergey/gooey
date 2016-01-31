@@ -61,3 +61,11 @@ bouncing ball.  Click in the canvas to move the ball to that point.
 Uses [diagrams-ghcjs](https://github.com/ghcjs/diagrams-ghcjs) to
 render a bouncing ball.  Click in the canvas to move the ball to that
 point.
+
+## [diagrams-reflex-counting](http://bergey.github.io/gooey/diagrams-reflex-counting/)
+
+Uses [diagrams-reflex](https://github.com/diagrams/diagrams-reflex) to render a circle, and respond to clicks on the circle.  The counter should update only when the circle is clicked, not when other parts of the SVG are clicked.
+
+## [diagrams-reflex-follow](http://bergey.github.io/gooey/diagrams-reflex-follow/)
+
+Uses [diagrams-reflex](https://github.com/diagrams/diagrams-reflex) to render a circle at the current mouse position.  Uses the mouse position event streams associated with each Diagram by `diagrams-reflex`.
