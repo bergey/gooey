@@ -43,6 +43,12 @@ main = do
   -- drawScene context shaderProg buffers
   return ()
 
+data Inputs = Inputs
+  { vertexPosition :: GLint
+  , uPMatrix :: WebGLUniformLocation
+  , uMVMatrix :: WebGLUniformLocation
+  }
+
 initHTML :: IO ()
 initHTML = do
   Just doc <- currentDocument
@@ -85,6 +91,13 @@ vertexShaderSource = unpack $(embedFile "src/triangle.vert")
 fragmentShaderSource :: String
 fragmentShaderSource = unpack $(embedFile "src/triangle.frag")
 
-initShaderInputs :: WebGL2RenderingContext -> WebGLProgram -> IO ()
+initShaderInputs :: WebGL2RenderingContext -> WebGLProgram -> IO Inputs
 initShaderInputs cxt shaderProgram = do
+  let shaderProgram' = Just shaderProgram
   useProgram cxt $ Just shaderProgram
+  pos <- getAttribLocation cxt shaderProgram' "aVertexPosition"
+  Just uPM <- getUniformLocation cxt shaderProgram' "uPMatrix"
+  Just uMVM <- getUniformLocation cxt shaderProgram' "uMVMatrix"
+  return $ Inputs pos uPM uMVM
+
+-- initBuffers ::
