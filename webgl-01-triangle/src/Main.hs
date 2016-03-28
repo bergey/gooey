@@ -35,8 +35,8 @@ main :: IO ()
 main = do
   initHTML
   context <- initGL "webgl0"
-  shaderProg <- initShaders context
-  -- initShaderInputs context shaderProg
+  Just shaderProg <- initShaders context
+  initShaderInputs context shaderProg
   -- buffers <- initBuffers context
   -- clearColor context 0 0 0 1
   -- enable context DEPTH_TEST
@@ -84,3 +84,7 @@ vertexShaderSource = unpack $(embedFile "src/triangle.vert")
 
 fragmentShaderSource :: String
 fragmentShaderSource = unpack $(embedFile "src/triangle.frag")
+
+initShaderInputs :: WebGL2RenderingContext -> WebGLProgram -> IO ()
+initShaderInputs cxt shaderProgram = do
+  useProgram cxt $ Just shaderProgram
