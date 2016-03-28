@@ -1,4 +1,4 @@
-{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 module Main where
 
@@ -19,6 +19,9 @@ import           GHCJS.Types
 
 -- import           Linear
 
+import Data.ByteString (ByteString)
+import Data.ByteString.Char8 (unpack)
+import           Data.FileEmbed (embedFile)
 import           Data.Coerce
 import           Control.Applicative
 import           Control.Concurrent
@@ -77,7 +80,7 @@ initShaders context = do
   return shaderProgram
 
 vertexShaderSource :: String
-vertexShaderSource = ""
+vertexShaderSource = unpack $(embedFile "src/triangle.vert")
 
 fragmentShaderSource :: String
-fragmentShaderSource = ""
+fragmentShaderSource = unpack $(embedFile "src/triangle.frag")

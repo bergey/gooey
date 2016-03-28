@@ -24,6 +24,8 @@ executable webgl-triangle
                      , ghcjs-dom > 0.2 && < 0.3
                      , ghcjs-base
                      , transformers
+                     , file-embed < 0.1
+                     , bytestring >= 0.10 && < 0.11
                      -- , linear
                      -- , semigroups
   hs-source-dirs:      src
