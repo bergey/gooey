@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE RecordWildCards #-}
 
 module Main where
 
@@ -19,6 +20,7 @@ import           GHCJS.Types
 
 -- import           Linear
 
+import Data.Bits
 import Data.ByteString (ByteString)
 import Data.ByteString.Char8 (unpack)
 import           Data.FileEmbed (embedFile)
@@ -37,16 +39,31 @@ main = do
   context <- initGL "webgl0"
   Just shaderProg <- initShaders context
   initShaderInputs context shaderProg
-  -- buffers <- initBuffers context
-  -- clearColor context 0 0 0 1
-  -- enable context DEPTH_TEST
-  -- drawScene context shaderProg buffers
+  buffers <- initBuffers context
+  clearColor context 0 0 0 1
+  enable context DEPTH_TEST
+  drawScene context shaderProg buffers
   return ()
 
 data Inputs = Inputs
-  { vertexPosition :: GLint
+  { vertexPosition :: GLuint
   , uPMatrix :: WebGLUniformLocation
   , uMVMatrix :: WebGLUniformLocation
+  }
+
+data BufferInfo = BufferInfo
+  { buffer :: WebGLBuffer
+  , itemSize :: GLint
+  , attrType :: GLenum
+                -- skip normalized, stride, offset
+  , mode :: GLenum
+  , firstI :: GLint
+  , numItems :: GLsizei
+  }
+
+data Buffers = Buffers
+  { triangles :: BufferInfo
+  , squares :: BufferInfo
   }
 
 initHTML :: IO ()
@@ -59,11 +76,12 @@ initHTML = do
 initGL :: String -> IO WebGL2RenderingContext
 initGL name = do
   Just doc <- currentDocument
-  Just canvas <- coerce <$> getElementById doc name
+  Just canvas' <- getElementById doc name
+  let canvas = coerce canvas'
   context <- coerce <$> getContext canvas "webgl"
   -- TODO error handling
   w <- getWidth canvas
-  h <- getWidth canvas
+  h <- getHeight canvas
   viewport context 0 0 (fromIntegral w) (fromIntegral h)
   return context
 
@@ -98,6 +116,33 @@ initShaderInputs cxt shaderProgram = do
   pos <- getAttribLocation cxt shaderProgram' "aVertexPosition"
   Just uPM <- getUniformLocation cxt shaderProgram' "uPMatrix"
   Just uMVM <- getUniformLocation cxt shaderProgram' "uMVMatrix"
-  return $ Inputs pos uPM uMVM
+  return $ Inputs (fromIntegral pos) uPM uMVM
 
--- initBuffers ::
+foreign import javascript unsafe "newFloat32Array([-0.5, 0.4, 0, -0.9, -0.4, 0, -0.1, -0.4, 0])" triangleArray :: JSVal
+
+foreign import javascript unsafe "newFloat32Array([0.9, 0.4, 0, 0.1, 0.4, 0, 0.9, -0.4, 0, 0.1, -0.4, 0])" squareArray :: JSVal
+
+initBuffers :: WebGL2RenderingContext -> IO Buffers
+initBuffers cxt = do
+  Just triBuf <- createBuffer cxt
+  bindBuffer cxt ARRAY_BUFFER (Just triBuf)
+  bufferData cxt ARRAY_BUFFER  (Just $ ArrayBuffer triangleArray) STATIC_DRAW
+  let tri = BufferInfo triBuf 3 FLOAT TRIANGLES 0 3
+  Just sqBuf <- createBuffer cxt
+  bindBuffer cxt ARRAY_BUFFER (Just sqBuf)
+  bufferData cxt ARRAY_BUFFER (Just $ ArrayBuffer squareArray) STATIC_DRAW
+  let sq = BufferInfo sqBuf 3 FLOAT TRIANGLE_STRIP 0 4
+  return $ Buffers tri sq
+
+-- TODO move attr location into BufferInfo
+drawBuffer :: WebGL2RenderingContext ->  WebGLProgram -> GLuint -> BufferInfo -> IO ()
+drawBuffer cxt prog attr BufferInfo{..} = do
+  bindBuffer cxt ARRAY_BUFFER (Just buffer)
+  vertexAttribPointer cxt attr itemSize attrType False 0 0
+  drawArrays cxt mode firstI numItems
+
+drawScene :: WebGL2RenderingContext -> WebGLProgram -> Inputs -> Buffers -> IO ()
+drawScene cxt prog is bs = do
+  clear cxt $ COLOR_BUFFER_BIT .|. DEPTH_BUFFER_BIT
+  drawBuffer cxt prog (vertexPosition is) (triangles bs)
+  drawBuffer cxt prog (vertexPosition is) (squares bs)
