@@ -7,22 +7,28 @@ import           JsImports                     (now)
 import           Diagrams.Backend.GHCJS
 import           Diagrams.Prelude              hiding (Time, render)
 import           GHCJS.DOM                     (currentDocument, currentWindow)
-import           GHCJS.DOM.Document            (documentGetBody,
-                                                documentGetElementById)
-import           GHCJS.DOM.Element             (elementGetOffsetLeft,
-                                                elementGetOffsetTop)
+import           GHCJS.DOM.Document            (getBody,
+                                                getElementById)
+import           GHCJS.DOM.Element             (getOffsetLeft,
+                                                getOffsetTop, getInnerHTML,
+                                                setInnerHTML)
 import           GHCJS.DOM.EventTargetClosures
-import           GHCJS.DOM.HTMLElement         (htmlElementGetInnerHTML,
-                                                htmlElementSetInnerHTML)
 import           GHCJS.DOM.Types               (Element, IsDocument, MouseEvent,
                                                 unElement)
-import           GHCJS.DOM.UIEvent             (uiEventGetPageX,
-                                                uiEventGetPageY)
-import qualified JavaScript.Canvas             as C
+import           GHCJS.DOM.UIEvent             (getPageX,
+                                                getPageY)
+-- import qualified JavaScript.Canvas             as C
+-- import GHCJS.DOM.HTMLCanvasElement (getContext)
+-- import GHCJS.DOM.CanvasRenderingContext2D (clearRect)
+import qualified  JavaScript.Web.Canvas as C
+import qualified JavaScript.Web.Canvas.Internal as C
+import GHCJS.DOM.EventTarget (addEventListener)
+import GHCJS.DOM.Types
 
 import           GHCJS.Foreign
 import           GHCJS.Types
 
+import Data.Coerce
 import           Control.Concurrent
 import           Control.Concurrent.MVar
 import           Control.Monad                 hiding (sequence_)
@@ -48,11 +54,12 @@ main = do
   state <- newMVar $ initialState t0
   -- get Canvas context
   Just doc <- currentDocument
-  Just body <- documentGetBody doc
-  htmlElementSetInnerHTML body initialHtml
-  Just canvas <- documentGetElementById doc "dia"
-  ctx <- getContext canvas
-  eventTargetAddEventListener canvas "click" False $ newBall state
+  Just body <- getBody doc
+  setInnerHTML body $ Just initialHtml
+  Just canvas <- getElementById doc "dia"
+  ctx <- C.getContext (coerce canvas)
+  cb <- eventListenerNew (newBall state canvas)
+  addEventListener canvas "click" (Just cb) False
   forever $ do
     s <- takeMVar state
     render ctx s
@@ -87,10 +94,10 @@ physics' s@(State { pos, velocity, time}) t = case collision s t of
 newBall :: MVar State -> Element -> MouseEvent -> IO ()
 newBall mstate canvas ev = do
     Just win <- currentWindow
-    x <- fromIntegral <$> uiEventGetPageX ev
-    y <- fromIntegral <$> uiEventGetPageY ev
-    x0 <- elementGetOffsetLeft canvas
-    y0 <-  elementGetOffsetTop canvas
+    x <- fromIntegral <$> getPageX ev
+    y <- fromIntegral <$> getPageY ev
+    x0 <- getOffsetLeft canvas
+    y0 <-  getOffsetTop canvas
     let x' = (x - x0) / 200
     let y' = 1 - (y - y0) / 200
     modifyMVar_ mstate (\s -> return $ s {pos = V2 x' y'})
@@ -128,9 +135,9 @@ reflect West (V2 x y) = V2 (-x) y
 reflect North (V2 x y) = V2 x (-y)
 reflect South (V2 x y) = V2 x (-y)
 
-getContext :: Element -> IO C.Context
-getContext el = do
-  C.getContext . castRef . unElement $ el
+-- getContext :: Element -> IO Context
+-- getContext el = do
+--   getContext . castRef . unElement $ el
 
 initialHtml :: String
 initialHtml = "<canvas id=\"dia\" width=\"200\" height=\"200\" style=\"border: 1px solid\"></canvas>"

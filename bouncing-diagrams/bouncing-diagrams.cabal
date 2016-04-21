@@ -23,7 +23,6 @@ executable bouncing-diagrams
   build-depends:       base >=4.7 && <4.9
                      , diagrams-ghcjs
                      , ghcjs-dom
-                     , ghcjs-canvas
                      , ghcjs-base
                      , diagrams-lib >= 1.3 && < 1.4
   hs-source-dirs:      src
