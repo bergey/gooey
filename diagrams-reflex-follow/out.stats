@@ -1,50 +1,175 @@
 code size summary per package:
 
-adjun_1rOE8ZAll4q2FmMJpV2eku:562
-base:                    536395
-colou_Ix3Hqw0CTI1HXrpVJ4fdbq:13122
-conta_5w3UY4chXx62LVUOUrXeRm:121427
-depen_5vw10fkSDDD0LdF4Qk8khv:2833
-depen_HCFzp6ZGqMz1lvJkHhl9BD:46684
-diagr_04bY1TkQGHPL1b6GpTyFLj:561832
-diagr_340U1jctLyq7RwCEcoHxRU:47004
-diagr_E4bVTDgvhCY2rCzy7Gd2IQ:113826
-diagr_KltN1YOU0qJ84SwfO1HAt6:343334
-distr_9n25PswhmxbErJSOvs8MqH:347
-dualt_7BSLYJx1xJ20S8xSVJZiYr:11818
-excep_Dt64kPlbg5dLPF70RHEAAf:4433
-finge_H6DJxXbojkqJRzmH4xYj0B:63501
+19tfGRahinD52TS2UoPMvl:  981
+2WXFpPSqpyc6vluorJlYoX:  40835
+3dAcR3GIMDpCyryNyZ3Mvf:  338
+4pkhtO5BDJUKxGJCxHkmHt:  50546
+5DQlM5QzIOrExMvBsIM5fJ:  1144
+7FxAbYPaIDc7YHNXMlCSsd:  323010
+7GMuvqooyYEL3xNAvJ8x1N:  127392
+7Yco3tAXfTn6btgflt3mwU:  11708
+8aOxettaJxa1Gy2W2yBxdI:  334814
+9LYzon6WNiU3SCR1nxROzc:  47865
+9gV9Pyiv9rBJeYGhchaxhz:  553021
+Ac2RSgutJhT2t31dftqnPd:  4312
+CH1HPuADYmj6Ko0mUBaXd5:  34191
+FP1jG4BOa0HI7lZ0gHLbLR:  13905
+GCIONoEicew6SN12syJeaa:  147105
+GlpQjSdlhi98zf2WD7xHPz:  379638
+H00cmYFQtbmHw0yPDhrAIY:  1151
+H66Zwk6728r49MqaKToon1:  2729
+IUnj1vWsCgZAbcxTIlLMyL:  10630
+IfFdftbOOg7651ubvFFLl2:  532
+KbfVO3BsrkbLhXWW4N4qlr:  12975
+LUEkvKsKXafGeMmKIC0w44:  45251
+base:                    525074
+conta_3UVKjic2MoqF92jHhg7Ur8:121429
 ghc-prim:                26475
-ghcjs_B7KLFJ07Vte3zPHAgRIBTb:10933
-ghcjs_D7BYGeMTlMGF2My8KZzKUS:153261
-ghcjs_Kc7TQ2cEDg1F5e5cgY2Vuk:9657
-integer-gmp:             43525
-inter_LYpe7ERaFPEDFpOPS1YSJ2:14109
-lens_86LLk2Z8bqzAqPEDX9yjG6:10858
-linea_FtlOs7SNeyvHbsWMAUIMFs:41599
-main:                    94255
-monoi_JQAD7MU6srf6M7ZqElwuNE:30241
-profu_1L0s7qGjP9cCAjKqmFTZNJ:1014
-refle_4lDPKAtTVVd58mBwhQNJyo:1155
-refle_5sdCSF7F8LnHu8d0KjXXjE:325080
-refle_EKVuvSERcLo95xEaT1RHLY:385360
-reftf_JOU40Nd0lxyACBtr3v80Qj:1202
-semig_53SOqUOHY1w2TQiKVymaYl:34877
-text_1ffW5NTi2SPHBcBuYSkgjk:3756
-trans_KzbnBSIEqPI2eU1Inn4mzm:16663
-unord_K2ncifK6iRTCSW3rFQhVnd:4814
+ghcjs_9jpamHTyFf8CL10DbS4jxv:11011
+ghcjs_AcdR0akxdlU20dhaKV0oql:9821
+integer-gmp:             31433
+main:                    96892
+semig_3EgKSVdFofd7kamomvPxQq:30801
+text_AoFu0I23s11C5sDmOoIAPZ:19959
+trans_EziP6JoSSK398q9vuXpnAA:16607
+unord_6zDVf5UGzMbGMOWP8CT2TB:4888
 
 
 code size per module:
 
-adjun_1rOE8ZAll4q2FmMJpV2eku
-    Data.Functor.Rep:                   562
+19tfGRahinD52TS2UoPMvl
+    Data.Profunctor.Unsafe:             981
+
+2WXFpPSqpyc6vluorJlYoX
+    Linear.Affine:                      309
+    Linear.Metric:                      2979
+    Linear.V2:                          32128
+    Linear.Vector:                      5419
+
+3dAcR3GIMDpCyryNyZ3Mvf
+    Data.Distributive:                  338
+
+4pkhtO5BDJUKxGJCxHkmHt
+    Data.FingerTree:                    50546
+
+5DQlM5QzIOrExMvBsIM5fJ
+    Reflex.Dom.Contrib.Widgets.Svg:     1144
+
+7FxAbYPaIDc7YHNXMlCSsd
+    Reflex.Dom.Class:                   16317
+    Reflex.Dom.Internal:                51821
+    Reflex.Dom.Widget.Basic:            254872
+
+7GMuvqooyYEL3xNAvJ8x1N
+    Diagrams.Backend.Reflex:            39786
+    Graphics.Rendering.Reflex:          87606
+
+7Yco3tAXfTn6btgflt3mwU
+    Data.Tree.DUAL.Internal:            11708
+
+8aOxettaJxa1Gy2W2yBxdI
+    Diagrams.Core.Compile:              26602
+    Diagrams.Core.Envelope:             23521
+    Diagrams.Core.HasOrigin:            1800
+    Diagrams.Core.Juxtapose:            3060
+    Diagrams.Core.Measure:              397
+    Diagrams.Core.Names:                7560
+    Diagrams.Core.Query:                3582
+    Diagrams.Core.Style:                74502
+    Diagrams.Core.Trace:                27782
+    Diagrams.Core.Transform:            22444
+    Diagrams.Core.Types:                142264
+    Diagrams.Core.V:                    1300
+
+9LYzon6WNiU3SCR1nxROzc
+    Diagrams.Solve.Polynomial:          47865
+
+9gV9Pyiv9rBJeYGhchaxhz
+    Diagrams.Angle:                     10488
+    Diagrams.Attributes:                34867
+    Diagrams.BoundingBox:               5356
+    Diagrams.Combinators:               8105
+    Diagrams.Located:                   3743
+    Diagrams.Parametric:                1
+    Diagrams.Path:                      11683
+    Diagrams.Points:                    3138
+    Diagrams.Segment:                   74139
+    Diagrams.Size:                      16365
+    Diagrams.Trail:                     50864
+    Diagrams.TrailLike:                 933
+    Diagrams.TwoD.Adjust:               10629
+    Diagrams.TwoD.Attributes:           28067
+    Diagrams.TwoD.Path:                 78630
+    Diagrams.TwoD.Points:               7820
+    Diagrams.TwoD.Polygons:             62666
+    Diagrams.TwoD.Segment:              77770
+    Diagrams.TwoD.Segment.Bernstein:    4716
+    Diagrams.TwoD.Shapes:               8222
+    Diagrams.TwoD.Text:                 41182
+    Diagrams.TwoD.Transform:            8905
+    Diagrams.TwoD.Vector:               1454
+    Diagrams.Util:                      3278
+
+Ac2RSgutJhT2t31dftqnPd
+    Control.Monad.Exception:            4312
+
+CH1HPuADYmj6Ko0mUBaXd5
+    Data.Monoid.Coproduct:              9156
+    Data.Monoid.Deletable:              13386
+    Data.Monoid.Recommend:              10733
+    Data.Monoid.WithSemigroup:          916
+
+FP1jG4BOa0HI7lZ0gHLbLR
+    Numeric.Interval.Kaucher:           13905
+
+GCIONoEicew6SN12syJeaa
+    GHCJS.DOM:                          4953
+    GHCJS.DOM.EventM:                   1335
+    GHCJS.DOM.JSFFI.Generated.Document: 3512
+    GHCJS.DOM.JSFFI.Generated.Element:  31947
+    GHCJS.DOM.JSFFI.Generated.NamedNodeMap:926
+    GHCJS.DOM.JSFFI.Generated.Node:     6572
+    GHCJS.DOM.JSFFI.Generated.Window:   1470
+    GHCJS.DOM.Types:                    96390
+
+GlpQjSdlhi98zf2WD7xHPz
+    Data.Functor.Misc:                  3679
+    Reflex.Class:                       14303
+    Reflex.Dynamic:                     7230
+    Reflex.Host.Class:                  1904
+    Reflex.Spider.Internal:             352522
+
+H00cmYFQtbmHw0yPDhrAIY
+    Control.Monad.Ref:                  1151
+
+H66Zwk6728r49MqaKToon1
+    Data.Dependent.Sum:                 621
+    Data.GADT.Compare:                  2108
+
+IUnj1vWsCgZAbcxTIlLMyL
+    Control.Lens.Internal.Indexed:      7247
+    Control.Lens.Internal.Iso:          2438
+    Control.Lens.Wrapped:               945
+
+IfFdftbOOg7651ubvFFLl2
+    Data.Functor.Rep:                   532
+
+KbfVO3BsrkbLhXWW4N4qlr
+    Data.Colour.Internal:               1881
+    Data.Colour.Names:                  1
+    Data.Colour.RGB:                    914
+    Data.Colour.SRGB:                   10179
+
+LUEkvKsKXafGeMmKIC0w44
+    Data.Dependent.Map:                 12784
+    Data.Dependent.Map.Internal:        32467
 
 base
     Control.Applicative:                1775
     Control.Concurrent.Chan:            3533
-    Control.Exception.Base:             7916
+    Control.Exception.Base:             7946
     Control.Monad.Fix:                  584
+    Data.Bits:                          382
     Data.Either:                        397
     Data.Foldable:                      5734
     Data.Functor.Identity:              643
@@ -57,22 +182,23 @@ base
     Data.Typeable:                      885
     Data.Typeable.Internal:             6161
     Foreign.C.Error:                    9812
+    Foreign.C.String:                   1568
     Foreign.Marshal.Alloc:              375
     Foreign.Marshal.Array:              2038
     Foreign.Storable:                   9693
-    GHC.Arr:                            3667
+    GHC.Arr:                            3643
     GHC.Base:                           15078
     GHC.Conc.Sync:                      7822
-    GHC.Enum:                           26647
+    GHC.Enum:                           19039
     GHC.Err:                            218
-    GHC.Exception:                      9626
+    GHC.Exception:                      9546
     GHC.Fingerprint:                    1900
     GHC.Fingerprint.Type:               1062
-    GHC.Float:                          103727
+    GHC.Float:                          104288
     GHC.Float.ConversionUtils:          3383
     GHC.Foreign:                        12136
     GHC.ForeignPtr:                     1265
-    GHC.IO:                             4536
+    GHC.IO:                             4673
     GHC.IO.Buffer:                      1276
     GHC.IO.BufferedIO:                  864
     GHC.IO.Device:                      1297
@@ -80,7 +206,7 @@ base
     GHC.IO.Encoding.Failure:            724
     GHC.IO.Encoding.Types:              1032
     GHC.IO.Encoding.UTF8:               61149
-    GHC.IO.Exception:                   19322
+    GHC.IO.Exception:                   19321
     GHC.IO.FD:                          37215
     GHC.IO.Handle:                      416
     GHC.IO.Handle.FD:                   6981
@@ -88,101 +214,25 @@ base
     GHC.IO.Handle.Types:                3571
     GHC.IORef:                          166
     GHC.Int:                            802
-    GHC.List:                           16914
+    GHC.List:                           16276
     GHC.MVar:                           188
-    GHC.Natural:                        7237
     GHC.Num:                            3710
     GHC.Ptr:                            631
-    GHC.Real:                           28287
+    GHC.Real:                           26077
     GHC.ST:                             186
     GHC.STRef:                          648
-    GHC.Show:                           10869
+    GHC.Show:                           11462
     GHC.Storable:                       1084
-    GHC.TopHandler:                     10349
+    GHC.TopHandler:                     13541
     GHC.Weak:                           188
-    GHC.Word:                           18162
+    GHC.Word:                           18176
     System.Posix.Internals:             16119
 
-colou_Ix3Hqw0CTI1HXrpVJ4fdbq
-    Data.Colour.Internal:               1946
-    Data.Colour.Names:                  1
-    Data.Colour.RGB:                    943
-    Data.Colour.SRGB:                   10232
-
-conta_5w3UY4chXx62LVUOUrXeRm
-    Data.IntMap.Base:                   11330
+conta_3UVKjic2MoqF92jHhg7Ur8
+    Data.IntMap.Base:                   11332
     Data.Map.Base:                      55833
     Data.Set.Base:                      52936
     Data.Tree:                          1328
-
-depen_5vw10fkSDDD0LdF4Qk8khv
-    Data.Dependent.Sum:                 649
-    Data.GADT.Compare:                  2184
-
-depen_HCFzp6ZGqMz1lvJkHhl9BD
-    Data.Dependent.Map:                 13212
-    Data.Dependent.Map.Internal:        33472
-
-diagr_04bY1TkQGHPL1b6GpTyFLj
-    Diagrams.Angle:                     10547
-    Diagrams.Attributes:                32188
-    Diagrams.BoundingBox:               5412
-    Diagrams.Combinators:               8180
-    Diagrams.Located:                   3807
-    Diagrams.Parametric:                1
-    Diagrams.Path:                      11844
-    Diagrams.Points:                    3159
-    Diagrams.Segment:                   85412
-    Diagrams.Size:                      16473
-    Diagrams.Trail:                     54747
-    Diagrams.TrailLike:                 951
-    Diagrams.TwoD.Adjust:               10804
-    Diagrams.TwoD.Arc:                  21923
-    Diagrams.TwoD.Attributes:           23160
-    Diagrams.TwoD.Ellipse:              8531
-    Diagrams.TwoD.Path:                 76429
-    Diagrams.TwoD.Points:               7843
-    Diagrams.TwoD.Polygons:             60126
-    Diagrams.TwoD.Segment:              77993
-    Diagrams.TwoD.Segment.Bernstein:    4745
-    Diagrams.TwoD.Shapes:               8223
-    Diagrams.TwoD.Text:                 12366
-    Diagrams.TwoD.Transform:            12221
-    Diagrams.TwoD.Vector:               1460
-    Diagrams.Util:                      3287
-
-diagr_340U1jctLyq7RwCEcoHxRU
-    Diagrams.Solve.Polynomial:          47004
-
-diagr_E4bVTDgvhCY2rCzy7Gd2IQ
-    Diagrams.Backend.Reflex:            38953
-    Graphics.Rendering.Reflex:          74873
-
-diagr_KltN1YOU0qJ84SwfO1HAt6
-    Diagrams.Core.Compile:              28051
-    Diagrams.Core.Envelope:             23815
-    Diagrams.Core.HasOrigin:            1828
-    Diagrams.Core.Juxtapose:            3096
-    Diagrams.Core.Measure:              405
-    Diagrams.Core.Names:                7672
-    Diagrams.Core.Query:                3599
-    Diagrams.Core.Style:                75448
-    Diagrams.Core.Trace:                24568
-    Diagrams.Core.Transform:            22758
-    Diagrams.Core.Types:                150758
-    Diagrams.Core.V:                    1336
-
-distr_9n25PswhmxbErJSOvs8MqH
-    Data.Distributive:                  347
-
-dualt_7BSLYJx1xJ20S8xSVJZiYr
-    Data.Tree.DUAL.Internal:            11818
-
-excep_Dt64kPlbg5dLPF70RHEAAf
-    Control.Monad.Exception:            4433
-
-finge_H6DJxXbojkqJRzmH4xYj0B
-    Data.FingerTree:                    63501
 
 ghc-prim
     GHC.CString:                        4537
@@ -191,92 +241,42 @@ ghc-prim
     GHC.Tuple:                          1098
     GHC.Types:                          1489
 
-ghcjs_B7KLFJ07Vte3zPHAgRIBTb
-    GHCJS.Prim:                         6501
+ghcjs_9jpamHTyFf8CL10DbS4jxv
+    GHCJS.Prim:                         6579
     GHCJS.Prim.Internal:                4432
 
-ghcjs_D7BYGeMTlMGF2My8KZzKUS
-    GHCJS.DOM:                          10623
-    GHCJS.DOM.EventM:                   1346
-    GHCJS.DOM.JSFFI.Generated.Document: 3587
-    GHCJS.DOM.JSFFI.Generated.Element:  29886
-    GHCJS.DOM.JSFFI.Generated.NamedNodeMap:936
-    GHCJS.DOM.JSFFI.Generated.Node:     6721
-    GHCJS.DOM.JSFFI.Generated.Window:   1490
-    GHCJS.DOM.Types:                    98672
-
-ghcjs_Kc7TQ2cEDg1F5e5cgY2Vuk
-    GHCJS.Marshal:                      7098
+ghcjs_AcdR0akxdlU20dhaKV0oql
+    GHCJS.Marshal:                      7262
     GHCJS.Marshal.Internal:             1838
     GHCJS.Marshal.Pure:                 721
 
 integer-gmp
     GHC.Integer.GMP.Prim:               333
-    GHC.Integer.Type:                   43192
-
-inter_LYpe7ERaFPEDFpOPS1YSJ2
-    Numeric.Interval.Kaucher:           14109
-
-lens_86LLk2Z8bqzAqPEDX9yjG6
-    Control.Lens.Internal.Indexed:      7349
-    Control.Lens.Internal.Iso:          2515
-    Control.Lens.Wrapped:               994
-
-linea_FtlOs7SNeyvHbsWMAUIMFs
-    Linear.Affine:                      317
-    Linear.Metric:                      3031
-    Linear.V2:                          32696
-    Linear.Vector:                      5555
+    GHC.Integer.Type:                   31100
 
 main
-    Main:                               94255
+    Main:                               96892
 
-monoi_JQAD7MU6srf6M7ZqElwuNE
-    Data.Monoid.Coproduct:              7658
-    Data.Monoid.Deletable:              12124
-    Data.Monoid.Recommend:              9487
-    Data.Monoid.WithSemigroup:          972
-
-profu_1L0s7qGjP9cCAjKqmFTZNJ
-    Data.Profunctor.Unsafe:             1014
-
-refle_4lDPKAtTVVd58mBwhQNJyo
-    Reflex.Dom.Contrib.Widgets.Svg:     1155
-
-refle_5sdCSF7F8LnHu8d0KjXXjE
-    Reflex.Dom.Class:                   16577
-    Reflex.Dom.Internal:                52477
-    Reflex.Dom.Widget.Basic:            256026
-
-refle_EKVuvSERcLo95xEaT1RHLY
-    Data.Functor.Misc:                  3823
-    Reflex.Class:                       14648
-    Reflex.Dynamic:                     7365
-    Reflex.Host.Class:                  1973
-    Reflex.Spider.Internal:             357551
-
-reftf_JOU40Nd0lxyACBtr3v80Qj
-    Control.Monad.Ref:                  1202
-
-semig_53SOqUOHY1w2TQiKVymaYl
+semig_3EgKSVdFofd7kamomvPxQq
     Data.List.NonEmpty:                 302
-    Data.Semigroup:                     34575
+    Data.Semigroup:                     30499
 
-text_1ffW5NTi2SPHBcBuYSkgjk
-    Data.Text.Array:                    1206
-    Data.Text.Internal:                 1246
-    Data.Text.Internal.Fusion.Common:   1304
+text_AoFu0I23s11C5sDmOoIAPZ
+    Data.Text:                          3250
+    Data.Text.Array:                    924
+    Data.Text.Internal:                 1254
+    Data.Text.Show:                     14531
 
-trans_KzbnBSIEqPI2eU1Inn4mzm
-    Control.Monad.IO.Class:             747
-    Control.Monad.Trans.Reader:         7576
-    Control.Monad.Trans.State.Strict:   8340
+trans_EziP6JoSSK398q9vuXpnAA
+    Control.Monad.IO.Class:             742
+    Control.Monad.Trans.Reader:         7550
+    Control.Monad.Trans.State.Strict:   8315
 
-unord_K2ncifK6iRTCSW3rFQhVnd
-    Data.HashMap.Array:                 1212
-    Data.HashMap.Base:                  3602
+unord_6zDVf5UGzMbGMOWP8CT2TB
+    Data.HashMap.Array:                 1234
+    Data.HashMap.Base:                  3654
 
 
 
-packed metadata: 604647
+packed metadata: 581049
 
