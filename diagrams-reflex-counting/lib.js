@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -27,8 +27,9 @@
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -303,7 +304,7 @@ function h$_hs_bytestring_long_long_uint_hex(x_a, x_b, buf_d, buf_o) {
     }
     { h$ret1 = (next_free); return (buf_d); };
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -332,8 +333,9 @@ function h$_hs_bytestring_long_long_uint_hex(x_a, x_b, buf_d, buf_o) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$hsprimitive_memcpy(dst_d, dst_o, doff, src_d, src_o, soff, len) {
   return h$primitive_memmove(dst_d, dst_o, doff, src_d, src_o, len);
@@ -382,7 +384,7 @@ function h$hsprimitive_memset_Ptr(p_d, p_o, off, n, x_1, x_2) {
     }
   }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -411,8 +413,9 @@ function h$hsprimitive_memset_Ptr(p_d, p_o, off, n, x_1, x_2) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // Copyright 2011 The Closure Library Authors. All Rights Reserved.
 //
@@ -472,7 +475,7 @@ goog.crypt.Hash.prototype.update = goog.abstractMethod;
  *     from the internal accumulator.
  */
 goog.crypt.Hash.prototype.digest = goog.abstractMethod;
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -501,8 +504,9 @@ goog.crypt.Hash.prototype.digest = goog.abstractMethod;
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // Copyright 2011 The Closure Library Authors. All Rights Reserved.
 //
@@ -903,7 +907,7 @@ goog.crypt.Md5.prototype.digest = function() {
   }
   return digest;
 };
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -932,8 +936,9 @@ goog.crypt.Md5.prototype.digest = function() {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /* include/HsBaseConfig.h.  Generated from HsBaseConfig.h.in by configure.  */
 /* include/HsBaseConfig.h.in.  Generated from configure.ac by autoheader.  */
@@ -1727,7 +1732,7 @@ function h$shutdownHaskellAndExit(code, fast) {
 function h$rand() {
   return (32768 * Math.random()) & 32767;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1756,8 +1761,48 @@ function h$rand() {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
+/* We do not support C11 <threads.h>.  */
+function h$ghcjs_currentWindow() {
+  return window;
+};
+function h$ghcjs_currentDocument() {
+  return document;
+};
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
+/* This header is separate from features.h so that the compiler can
+   include it implicitly at the start of every compilation.  It must
+   not itself include <features.h> or any other header that includes
+   <features.h> because the implicit include comes before any feature
+   test macros that may be defined in a source file before it first
+   explicitly includes a system header.  GCC knows the name of this
+   header in order to preinclude it.  */
+/* glibc's intent is to support the IEC 559 math functionality, real
+   and complex.  If the GCC (4.9 and later) predefined macros
+   specifying compiler intent are available, use them to determine
+   whether the overall intent is to support these features; otherwise,
+   presume an older compiler has intent to support these features and
+   define these macros by default.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /* include/HsBaseConfig.h.  Generated from HsBaseConfig.h.in by configure.  */
 /* include/HsBaseConfig.h.in.  Generated from configure.ac by autoheader.  */
@@ -2236,7 +2281,7 @@ function h$chmod(path_d, path_o, m) {
     } else
         return h$unsupported(-1);
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -2265,14 +2310,15 @@ function h$chmod(path_d, path_o, m) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$filepath_isWindows() {
     if(h$isNode && process.platform === 'win32') return true;
   return false;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -2301,46 +2347,9 @@ function h$filepath_isWindows() {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
-/* We do not support C11 <threads.h>.  */
-function h$ghcjs_currentWindow() {
-  return window;
-};
-function h$ghcjs_currentDocument() {
-  return document;
-};
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <http://www.gnu.org/licenses/>.  */
-/* This header is separate from features.h so that the compiler can
-   include it implicitly at the start of every compilation.  It must
-   not itself include <features.h> or any other header that includes
-   <features.h> because the implicit include comes before any feature
-   test macros that may be defined in a source file before it first
-   explicitly includes a system header.  GCC knows the name of this
-   header in order to preinclude it.  */
-/* glibc's intent is to support the IEC 559 math functionality, real
-   and complex.  If the GCC (4.9 and later) predefined macros
-   specifying compiler intent are available, use them to determine
-   whether the overall intent is to support these features; otherwise,
-   presume an older compiler has intent to support these features and
-   define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -2470,7 +2479,7 @@ function h$buildObjectFromTupList(xs) {
     }
     return r;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -2499,8 +2508,9 @@ function h$buildObjectFromTupList(xs) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /* FNV-1 hash
  *
@@ -2529,7 +2539,7 @@ function h$hashable_getRandomBytes(dest_d, dest_o, len) {
   }
   return len;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -2558,8 +2568,9 @@ function h$hashable_getRandomBytes(dest_d, dest_o, len) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /* include/HsBaseConfig.h.  Generated from HsBaseConfig.h.in by configure.  */
 /* include/HsBaseConfig.h.in.  Generated from configure.ac by autoheader.  */
@@ -2817,6 +2828,18 @@ function h$process_pipeFd(pipe, write) {
         fd.chunk = { buf: null, pos: 0, processing: false };
         fd.eof = false;
         fd.err = null;
+        // this is a workaround for some versions of node.js incorrectly flushing streams,
+        // leading to data loss when processes exit quickly. see GHCJS #453
+        pipe.on('data', function(buf) {
+            if(fd.chunk.buf) {
+                fd.chunk.buf = Buffer.concat([fd.chunk.buf, buf]);
+            } else {
+                fd.chunk.buf = buf;
+            }
+            h$process_process_pipe(fd, pipe);
+        });
+        pipe.pause();
+        // end workaround
         pipe.on('readable', function() {
             ;
             h$process_process_pipe(fd, pipe);
@@ -3015,7 +3038,7 @@ function h$process_waitForProcess(pid, code_d, code_o, c) {
     } else
         h$unsupported(-1, c);
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3044,8 +3067,9 @@ function h$process_waitForProcess(pid, code_d, code_o, c) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -3261,7 +3285,7 @@ function h$_hs_text_encode_utf8(destp_v, destp_o, src_v, srcoff, srclen) {
   }
   destp_v.arr[destp_o][1] = dest;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3290,14 +3314,15 @@ function h$_hs_text_encode_utf8(destp_v, destp_o, src_v, srcoff, srclen) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$get_current_timezone_seconds(t, pdst_v, pdst_o, pname_v, pname_o) {
-    var d = new Date(t);
+    var d = new Date(t * 1000);
     var now = new Date();
     var jan = new Date(now.getFullYear(),0,1);
-    var jul = new Date(now.getFullYear(),0,1);
+    var jul = new Date(now.getFullYear(),6,1);
     var stdOff = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
     var isDst = d.getTimezoneOffset() < stdOff;
     var tzo = d.getTimezoneOffset();
@@ -3305,9 +3330,9 @@ function h$get_current_timezone_seconds(t, pdst_v, pdst_o, pname_v, pname_o) {
     if(!pname_v.arr) pname_v.arr = [];
     var offstr = tzo < 0 ? ('+' + (tzo/-60)) : ('' + (tzo/-60));
     pname_v.arr[pname_o] = [h$encodeUtf8("UTC" + offstr), 0];
-    return (3600-60*tzo)|0;
+    return (-60*tzo)|0;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3336,8 +3361,9 @@ function h$get_current_timezone_seconds(t, pdst_v, pdst_o, pname_v, pname_o) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -3418,7 +3444,7 @@ function h$closeWebSocket(status, reason, ws) {
   }
   ws.close(status, reason);
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3447,8 +3473,9 @@ function h$closeWebSocket(status, reason, ws) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -3510,7 +3537,7 @@ function h$listToArray(xs) {
 function h$listToArrayWrap(xs) {
     return (h$c1(h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e, (h$listToArray(xs))));
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3539,8 +3566,9 @@ function h$listToArrayWrap(xs) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$animationFrameCancel(h) {
     if(h.handle) window.cancelAnimationFrame(h.handle);
@@ -3559,7 +3587,7 @@ function h$animationFrameRequest(h) {
         }
     });
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3588,8 +3616,9 @@ function h$animationFrameRequest(h) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$exportValue(fp1a,fp1b,fp2a,fp2b,o) {
   var e = { fp1a: fp1a
@@ -3615,7 +3644,7 @@ function h$releaseExport(e) {
   e.released = true;
   e.root = null;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3644,8 +3673,9 @@ function h$releaseExport(e) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -4636,7 +4666,7 @@ function h$jsstringSplitRE(limit, re, str) {
     while(--i>=0) r = (h$c2(h$ghczmprimZCGHCziTypesziZC_con_e, ((h$c1(h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e, (a[i])))), (r)));
     return r;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -4665,8 +4695,9 @@ function h$jsstringSplitRE(limit, re, str) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -4710,7 +4741,7 @@ function h$jsstringRawSplitAt(k, x) {
     if(k >= x.length) return (h$c2(h$ghczmprimZCGHCziTupleziZLz2cUZR_con_e,((h$c1(h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e, (x)))),(h$jsstringEmpty)));
     return (h$c2(h$ghczmprimZCGHCziTupleziZLz2cUZR_con_e,((h$c1(h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e, (x.substr(0,k))))),((h$c1(h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e, (x.substr(k)))))));
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -4739,8 +4770,9 @@ function h$jsstringRawSplitAt(k, x) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$foreignListProps(o) {
     var r = HS_NIL;
@@ -4750,7 +4782,7 @@ function h$foreignListProps(o) {
 
     } */
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -4779,8 +4811,9 @@ function h$foreignListProps(o) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // conversion between JavaScript string and Data.Text
 // values defined in Gen2.ClosureInfo
@@ -4854,7 +4887,7 @@ function h$safeTextFromString(x) {
     }
     return h$textFromString(x);
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -4883,8 +4916,9 @@ function h$safeTextFromString(x) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -4990,7 +5024,7 @@ function h$jsonTypeOf(o) {
         }
     }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -5019,8 +5053,9 @@ function h$jsonTypeOf(o) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$sendXHR(xhr, d, cont) {
     xhr.addEventListener('error', function () {
@@ -5038,7 +5073,7 @@ function h$sendXHR(xhr, d, cont) {
  xhr.send();
     }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -5067,8 +5102,9 @@ function h$sendXHR(xhr, d, cont) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$dom$sendXHR(xhr, d, cont) {
     var clear;

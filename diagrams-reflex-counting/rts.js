@@ -1334,7 +1334,7 @@ var h$ret7;
 var h$ret8;
 var h$ret9;
 var h$ret10;
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1363,8 +1363,9 @@ var h$ret10;
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /* platform-specific setup */
 // top-level debug initialization needs this. declare it in case we aren't in the same file as out.js
@@ -1380,6 +1381,7 @@ function h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e() { return h$stack[h$sp]; };
    more platforms should be added here in the future
 */
 var h$isNode = false; // runtime is node.js
+var h$isJvm = false; // runtime is JVM
 var h$isJsShell = false; // runtime is SpiderMonkey jsshell
 var h$isJsCore = false; // runtime is JavaScriptCore jsc
 var h$isBrowser = false; // running in browser or everything else
@@ -1398,6 +1400,13 @@ if(typeof process !== 'undefined' && (typeof h$TH !== 'undefined' || (typeof req
     var h$child = child_process;
     var h$process = process;
     var h$processConstants = process['binding']('constants');
+} else if(typeof Java !== 'undefined') {
+    h$isJvm = true;
+    this.console = {
+      log: function(s) {
+        java.lang.System.out.print(s);
+      }
+    };
 } else if(typeof snarf !== 'undefined' && typeof evalInFrame !== 'undefined' && typeof countHeap !== 'undefined') {
     h$isJsShell = true;
     this.console = { log: this.print };
@@ -1413,7 +1422,7 @@ function h$getGlobal(that) {
     if(typeof global !== 'undefined') return global;
     return that;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1442,8 +1451,9 @@ function h$getGlobal(that) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /*
   set up the google closure library. this is a rather hacky setup
@@ -1495,7 +1505,7 @@ goog.isString = function(v) {
 }
 goog.math = {};
 goog.crypt = {};
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1524,8 +1534,9 @@ goog.crypt = {};
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /*
  Copyright (c) 2010, Linden Research, Inc.
@@ -2425,7 +2436,7 @@ goog.crypt = {};
     global.DataView = global.DataView || DataView;
   }());
 }(h$getGlobal(this)));
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -2454,8 +2465,9 @@ goog.crypt = {};
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /** @constructor */
 var BigInteger = (function() {
@@ -3590,7 +3602,7 @@ return BigInteger;
 // fixme prefix this
 var h$nbv = BigInteger.nbv;
 var h$nbi = BigInteger.nbi;
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3619,8 +3631,9 @@ var h$nbi = BigInteger.nbi;
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 (function (global, undefined) {
     "use strict";
@@ -3777,8 +3790,8 @@ var h$nbi = BigInteger.nbi;
     }
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
-}(this));
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+}(h$getGlobal(this)));
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -3807,8 +3820,9 @@ var h$nbi = BigInteger.nbi;
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
@@ -4479,7 +4493,7 @@ goog.math.Long.prototype.shiftRightUnsigned = function(numBits) {
     }
   }
 };
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -4508,8 +4522,9 @@ goog.math.Long.prototype.shiftRightUnsigned = function(numBits) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /*
   simple set with reasonably fast iteration though an array, which may contain nulls
@@ -4912,7 +4927,7 @@ h$HeapSet.prototype._upHeap = function(i) {
         }
     }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -4941,8 +4956,9 @@ h$HeapSet.prototype._upHeap = function(i) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -6037,7 +6053,7 @@ function h$munmap(addr_d, addr_o, size) {
   }
   return 0;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -6066,8 +6082,9 @@ function h$munmap(addr_d, addr_o, size) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 /*
   Do garbage collection where the JavaScript GC doesn't suffice or needs some help:
@@ -6361,7 +6378,7 @@ function h$markThread(t) {
 // big object, not handled by 0..7 cases
 // keep out of h$follow to prevent deopt
 function h$followObjGen(c, work, w) {
-   work.push(c.d1);
+   work[w++] = c.d1;;
    var d = c.d2;
    for(var x in d) {
 //              if(d.hasOwnProperty(x)) {
@@ -6582,7 +6599,7 @@ function h$finalizeCAFs() {
     }
     ;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -6611,8 +6628,9 @@ function h$finalizeCAFs() {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -6929,7 +6947,7 @@ function h$handleErrnoC(err, r_err, r_success, c) {
         c(r_success);
     }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -6958,8 +6976,9 @@ function h$handleErrnoC(err, r_err, r_success, c) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 function h$MD5Init(ctx, ctx_off) {
   if(!ctx.arr) { ctx.arr = []; }
@@ -6978,7 +6997,7 @@ function h$MD5Final(dst, dst_off, ctx, ctx_off) {
   }
 }
 var h$__hsbase_MD5Final = h$MD5Final;
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -7007,8 +7026,9 @@ var h$__hsbase_MD5Final = h$MD5Final;
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -7493,7 +7513,7 @@ function h$ctz8(x) {
 function h$ctz64(x1,x2) {
     return (x2 === 0) ? 32 + h$ctz32(x1) : h$ctz32(x2);
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -7522,8 +7542,9 @@ function h$ctz64(x1,x2) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // Unicode tables generated by ghcjs/utils/genUnicode.hs
 var h$printRanges = "f|!-f=|/q'/+1$J|(mo'1q&')| 63Y--EO'|$9| ('| ?'|!9?| ?-| %'AZ'| JI| +|#U2'''O0$)+'5'''+3*','O-).+''O0&&&'$-+''))0+$1C9)4(N0&,'7(('@+';A)2'''O0&,'5''')3'+','G7'.))*)'$&)')));+-))*'.>M-+2(PB)3(*1'&/+'733(2(P6,'5(*1'1$+'7&?)2(u'3(,32+'C)1''F)S4$'1)*/$2/7');| =+^n'$''$'.+0( #''<('-$.'7'+d| Yk+rk@<n|$G$-&|(E*'1$*'v*'f*'1$*'A| :*'| O'd)W/| t9|.r)|! 1=09Q5K;=(&;|!+'7/7/?'7/| z3z-| U7b:+;+(x'-9|  +W/9)| E'| K]'9/7/?'A| K| b+| #)|!W3| A)A)| /| I33r&/|%M/|&;'/'p'/'3 $a'| 3@>'/H')48-S1| +C''Y<)`GfA|#)/|-h-rU9M|H;'d'h);2| %| '| &|#<-| #$-&| 91'?S510000000|!4| CW| {;|$hW;+| I| u'|!=-v)|!+y-l;| '|$y} ^y7}%0j| /|9t)| 75|'fK|!+| {3|#3_''| S| 3+7/| 93| S5;/[+| r9`)| f8+f| 65?'7'|!=S[7/'/'/510| (+'|!#| %'7/}!e;;Q+| +}!'n|(/'|!Cp1;--W,$&&|!gE|(-C| I'| 5t?'W/?'jH*+-|#!+|$7)/'/'/'))10='';VH&@'?h|!f-)+| #)| v);+| &| %|!t^)| +A[+l;Y-z-`m+?x|#Q'7| vt3| 19|#4|&v5O73|#E/'$|  &)&Q| X35| j[)Y-| H| 9/'| I+&-3(X+)+5351| Idr+;5| 5)^'Y-W1+;1| j| [|+tb|(U| f+`A| E*?U17/| 3>;r5| [+&9/K9Gy|!S| ?-71)2'''O0&,'5''')5,1'1)-|%x| Y37|#b| 5'G| 5| S97p| 937|*K| p;|)y| ;|<Y|4M|!=|!M,|b`|7l}#8j|,^1b6+'|!/`'/7| U770L-I|3U| S9| 'CE}$&7'|e7|!E-=)517'+} 47|%M7r'| ^3|!5h| U|$/| x5G|#1| t| V&'&''+:$0| J*'30Z*,$)1|'T'|&O'| -}  %|$E'C|=C+X&$'$7* #/* $)&$' &'$'+0**$6D-),D| 1'|&#|  +|!7;A'A@m7=)b| @+z| `^=z-51'|#r| #)| f'| h-l3|%`| _-xu|#P'|#+C=)+;|!W;| tz;+| 937/t3`|I^}*Q/v} !59|$x}$#I|,'|G1|%A";
@@ -7534,7 +7555,7 @@ var h$alphaRanges = "| MW/W| '6*,Qa|*2+;?-1$|!q-&'+$/$)$J| o|#*3|#bo'0r| YY-)| #
 var h$toLowerMapping = "| K Wb|!9 Qb!1bf  9#  !|$F  ## &'  (# &'  8#  !|!_# # #)  !|$^# ! # ! |$U !# '|$S&'  !| f|$M !|$O# ! |$S !|$W  !|$`|$[&)  !|$`|$d ! |$f $#  !|$n# ! |$n'  !#  !|$n#!'|$l ##  !|$p#) &1  !%# ! % !#  !%# ) #'  )# &'  !%# ! # ! |!. !| 6# 4 # ! |!q * #1  !}![r# ! |#X}%=]'  !#  !|$>| Q !| U# % #|&I  !# &) &3 |%0/  !n )l ! | G!'| E!Eb!5bj B3  ,# &- |!]'  !#  !.#' )|!qC| hdb| )  1# &5  <#  !?# ' #'  P# &' p| '|a5 p} hG ! } hG- }#To|l)  l# &5  !} p4  P# &5 303 /07 303 303 /09  $0 @3 30S 303 303 303 '0'| ZD9 +| sD9 '0'|!4; '0'|!L<9 '|!m'|!iD|&Y }#a()  !}!&:}!#V/ | 8| # CAI &|23 WU|Ht | '| '| +  !#  !}!Zc|ue}%:e'  $#  !}![R}!Zo !}![X}![V ! #' &3 '}!]> R# &3  !# &+ &}'])  7# &I  .# &|##  '# &)  ?# &7  ##  !}(b.# % #+  !# }4p*'  !# &)  +#  !}*H0}*HF !}*H>}*H*'  !}*G&}*GV}%OG Wb|;/ tr} :K db}p?  ";
 var h$toUpperMapping = "|!1 Wa| = |A$x Qa!1a !|!`  9!  !|%.  #! $'  (! $'  7! $'  #!  !!|&]|(_'  !! $' $) $- $' |$>)  !!|#Y) |%i'  #! $' $+ $' $)  !! $' $)  !! |!N-  !!$ ! ! !$  !!$ ) ! !| e  )! $'  !!$ ! !)  4! $)  )! $3 $' '}!]? ! !+  %!  !!}![Y !}![S}![W !|$]|$T!'|$R ! |$L ! |$N}4qo)  !|$R}*H? ! |$V ! }*GS !}*H1  !|$Z|$_ ! }!Zd}4q6'  !|$_  !}!Zp|$c' |)N1 }%:g' |)_' |)_)  !}*GW|$m|#&'|$k|#.- |)c9 }4o.|#b |#ez  !! $) $) )|!r| % | _)k!Ea| B5a|!m'| D ! | B|!P)  !| $| 2 !0  ,!  !!| s !| g/ !|!T |$8' $' $| 1 daC| g 2 !5  ;! $'  '!  !!> Q !| + p| &} N7 }1H>) } pP|!v  l! $- |!X-  P! $313 /17 313 313 /19  $1 B3 313 '| [+| t'|!5'|!n'|!M'|!j' 313 313 313 '1 ! 37 }#R4+ F; '1? '1) >= F|'b | 6f C@+ $|2f WT|IE | '| &' $)  !}![q}![k $ !/ $' $7  R! $3  !! $+ $; p} hF ! } hF- }#Tm}'Zj  7! $I  .! $|##  '! $)  ?! $7  !! $'  %! $+ $+  !! $)  *! $}%P= Wa|;? tq} :; da}p>; ";
 var h$catMapping = "d;P)3J)3 !/0 !34 !3.'37*'3)4'3W! !/3 !06 !-6W# !/4 !04f; !83+5 !73 !67 !&1 !4< !76 !74', !6#'3 !6, !&2),FQ!H1!S#H3# <!#$'# (!#$'# 8!#'! ##!)#'! !#!&'!&)!'#+!&'!&)!)#'!&'! ##!&'! !#!'# !!#'!&)! !#!&'!'# !&!)#+& !!$ !#! !$# !!$ )#!'# )!#$'# !!$ !#!&)! >#!1#'!&'!'# !!#+! %#!| S#,Y#G%+6;%?6-%16 !%6*E6|!O' #!# !%6 !!#' *)# !3!+ '6 !!3)! ! !!'!&E!!5!j#$'#)!)# ,!#$-# !!# !4!&'!'#| /!| )# 2!#N-'') <!#'! '#!'# Q!#!p!' */3!r# ! 3<' '7 !5 | #' !.'F''F'' !3'3 Y&- )&'39 /<)4'3J'3'79' !3<!'3d&*7&M'7*+3'&.|!5& !3&1' !<7/''%''N+''&7*)&'7,?3 ! < !&'`&Y'' |! &9',? 7*f&5''%N)3*- O&+'*5'*)'*-'' A3!U&)'' F| K I&| + b'0| 5& !'( !'&)(3'+(.'(,1'7&'''37* !3%A&.'(!3&' '&' O&!1& ! &) +&'  !'&)(+'' '(' '( !'&3 0+ '&!)&''' 7*'&'5/, !75- '' !( /&+ '&' O&!1&!'&!'&!'&'  !' )(''+ ''' )') .1 +& ! &1 7*'')&.9 '' !( 5&!)&!O&!1&!'&!-&'  !'&)(-'!'' !( '(.' ,A '&''' 7* !35A .'(!3&' '&' O&!1&!'&!-&'  !'& !('0+'' '(' '(.3  !'(+ '&!)&''' 7* !7&/,7  !'&!/&) )&!+&) '& ! &!'&) '&) )&) ;&+ '(.'() )(!)(.' ,/ 0? 7*),/7 !57- .)(!3&!)&!Q&!C&) ,)'+(!)'!+'1 ''!'&/ '&''' 7*3 1, !7 .'(!3&!)&!Q&!7&!-&'  !'& !('-( ! ''(!'(''1 '(1  !& '&''' 7*!'&? .'(!3&!)&!v&' ,)(+'!)(!)( !'&3 03 '&''' 7*/,) N/&' '(!G&) S&!5& ! &' 1&) .+ )()' ! '!3(/ 7*' '(F; | )&.'&1'+ J/&*3'F7*'3n '& ! &' '& ! &' ,/ +&!1&!)& # &' '&!+&.'&/'!'',' -& ! %!/'' 7*' +&d ,)7A3 !73)7''/77*7, $7' #/0'(3&!l&+ ?'0-'F''-&9'!l'!37./7!'7-3+7'3n z&'(+'0/'0'''('',7*/3/&'(''+&)',)('&1()&+'=&.'(''/( !'&07*)(.'7p! ! !- $' z& !3%|'E&!+&' 1& ! &!+&' v&!+&' f&!+&' 1& ! &!+&' A&!| ;&!+&' | O&' )'53K,) C&77/ | t&9 <|-j&'3E&PW& !/0) | `&)3)+3&1 =&!+&)'9 G&)''35 G&''; =&!)&!''; | 1&''01'3(.'(9')3*)3 !5&.' 7*/ 7,/ /3<+3)' !< 7*/ j&*| 1&3 v& !'&- | U&7 b&!)'+('')(+ '(./()'+ N) '37*`&' -&9 |  &+ E(1&'(/ 7*8) h7Q&'''(.' '3| 3& !('01' ! ' !(''(3'/(7'' .7*/ 7*/ 13*/3' ?'2| K +'0| '& !'(-' !('-(.'(1&+ 7*13775'57) ''0`&0+''(''0)''&7*|  & !'('')( !'()''(3 +3l&3(3''('') -37*) )&7*`&/%'3| I 333 )'F='01'+&.+&'(.'&!''/ |  #| G%=#*h#n%| 5'/ +' l!#$5# Q!#$5#3!/#' /!' 3#3!3#3!/#' /!' 3# % !3#3!?#' 3#3$3#3$3#3$-#!'#+! !$6&)6)#!'#+!()6+#' '#+!!)63#-!)6' )#!'#+!('6!98-</.'3 !12>'1 !2/B33 !9:-<P53 !12+3'-)3 !4/@93 !43:73P-<!7< !,%' /,)4 !/0*7,)4 !/0!=%) `5G ='+).));'A '7$+7$'7&)!'#)! !#7$'7H-!/7 $!7+! !7#+!&+&&'7'#'!-4$+# !74'7 !#7C,j+ !!#++8/ -4-7'4+7H'7H'7H17Hb7'4'7 !47Hb7|%z437 #/0K7'417 !/0| l7H`7U4t7/4U7- r7U 97M | A,| f7O,|$)7H57H| 5734|!M7H|%Q7 (/0`,|  7-4 !/0b4 &/0C4|%b7|!v4 ,/0| G4 #/0d4 !/0|%f4| )7M4'7/4r7' d7' h7) ;7!37| % | '!!| '# ! !&)!'# $!#+! !#!'#$/#'%)! R#!'#/7 #!#)' !!#- +38'3p# ! #- &' | 9&1  !%3? .Q&5 1&!1&!1&!1&!1&!1&!1&!1&!d''3 #12)3 !12 !31D53<'3 !.3 !12'3 !12 %/0-3*73'.+3 !.3>| C W7!|! 7; |$h7W ;7+ P)3 !7% !&+ &/0'7 %/0 !./'0N5++''(<-%'7)+ !%&F'7!| v&' '''6'% !&.|!#&F)%,- v&) |!+&!'7+,77Y&- l7; C&b7!7,`73,NA,d77,r7A,| G7!|%b7} X;&7 | I7}%/C&| / M&*|9G&) | 775 t&/%'3|%z&*)3C&7*'&K  8!# !&'))F7' !3% /!#'% ! '| U&7+''/33 Q65%'6 '!#$)# @!#*3# #!#'! %#! !#%'6 #!# ! ! !#!)# +!#+!' '!| S ,'%&1&.)&.+&.Q&'(''0+7+ /,'7 !57/ | 1&+33 '(| -&C(.5 '37*/ G'/&)3,+ 7*[&3''3Q&9''(9 F^&) )'0| '&.'(+''(.+(=3 ! %7*+ '3-& !'%5&7*-&!v&/''('''(''5 )&.3& !'(' 7*' +3C&*/&)7 !&( !'(| -& !'&)''&''-&'' !&',S '&*'39&0'''('3,'% !('7 /&' /&' /&5 1&!1&!z#L+%+ '#|!# j&'(.'(.'( !3(.' 7*/ }!e;&; Q&+ | +&+ |MQ=} T7 |(/&' |!C&p 1#; -#-  !&'7&H=&!-& ! &!'&!'&!|!G&C6E |()& !0/C | I&' | 5&t ;& !57' C'13 !/0F/ ?'' F'.'- )/0'3 !/0+3)-)3!+3 !./ #0/@)3 !4.)4 ! 3J'3+ -&!|##&'  !< )3J)3 !/0 !34 !3.'37*'3)4'3W! !/3 !06 !-6W# !/4 !04 !/0 !3/@'37&*| #&'%b&) /&' /&' /&' )&) '5 !46N'5 ! 7+4'77 )<'7' ;&!W&!I&!'&!A&' ?&h |!f&- )3+ | #,) 57| 3++,E7',N) ;7+ N| ' | #7.|!t ^&) | +&A .Y,+ d&+,; E&63&6- p&-'- `& ! 3l&+ 3&F-+x t!t#| f&' 7*| v t&3 | 1&9 F|#5 |&v&5 O&7 3&|#E /&'  !& |  &!'&) ,' Q& ! 33,Q&'71,b&3 5,| j O&/,) FW&- F| I | 9&/ '&| I ,)'!''- +'+&!)&!Y&+ )'+ .3,3 531 ^&',F^&),d 3&N[&''+ -,135 | 5&) 13O&' 3,I&- 3,G&1 +3; 1,| j | [&|+t b,|(U  !('0| 3&A'13+ K,7*A )'0| #&)(+''('''3X+3? U&1 7*/ )'l&-'03'!7*+3; j&.'3,5 ''0| )&)(5''(+&+3+ F' 7*,/ K,9 G&!U&)()''( !'(''/3|!S | '&.)(3'- 7*1 .'(!3&' '&' O&!1&!'&!-&'  !'&'(.+(' '(' )(5 0- -&'(' 1') -'|%x | )&)(/' !('+(''0'''& !3&3 7*|#b | '&)(+'' +(''0''53| 5 | )&)(3''( !'('')3,9 7*p z& !'(.'(/' !('3 7*|*K d!d#7*5,; ,|)z | ;&|<Y |4M&|!= |!M+!-3|b` |7l&}#8j |,^&1 b&!7*+ '3|!/ `&' -'F7 | )&1'-3+7+% !377 7*!1,!M&- I&|3U | S&9 ,| %(C +'=%}$&7 '&|e7 |!E&- =&) 5&1 7&' N''F+<} 4/ |%M77 r7' | A7'()')7/(3<3''71'`7+'| )7h | M7)'N|$/ | x75 G,|#1 W!W#W!1#!G#W!W# !! '!' $' '!' +!!3!+# ! #!1#!9#W!W#'!!+!' 3!!1!!W#'!!+!!-! ! !) 1!!W#W!W#W!W#W!W#W!W#W!W#W![#' U!HU#H/#U!HU#H/#U!HU#H/#U!HU#H/#U!HU#H/# !!#' | -*}  % |$E&' 5,1'|=C +&!Y&!'& ! &'  !& 7&!+& # &/ ,+  $& )&!'& ! &'  && '& ! &' +&!1&!+&!+& ! &!7&!E&- )&!-&!E&| 1 '4|&# |  7+ |!77; A7' A7!A7!n77 =,) b7!| A7+ z7| ` ^7= z7- 571 '7|#r | #7) | f7' | h7- l73 |%`7!| `7- x7!v7!|#Q7' |#+7C =7) +7; |!W7; | t7z ;7+ | 973 77/ t73 `7|I^ }*Q/&v } !5&9 |$x&}$#I |,'&|AO X` |!/<|!p |%A'}PF' ";
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -7563,8 +7584,9 @@ var h$catMapping = "d;P)3J)3 !/0 !34 !3.'37*'3)4'3W! !/3 !06 !-6W# !/4 !04f; !83
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -8174,7 +8196,7 @@ function h$throwJSException(e) {
   var someE = (h$c2(h$baseZCGHCziExceptionziSomeException_con_e,(h$ghcjszmprimZCGHCJSziPrimzizdfExceptionJSException),((h$c2(h$ghcjszmprimZCGHCJSziPrimziJSException_con_e,((h$c1(h$ghcjszmprimZCGHCJSziPrimziJSVal_con_e, (e)))),(h$toHsString(e.toString())))))));
   return h$throw(someE, true);
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -8203,8 +8225,9 @@ function h$throwJSException(e) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -8723,7 +8746,7 @@ function h$integer_negateInteger(i) {
     ;
     return i.negate();
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -8752,8 +8775,9 @@ function h$integer_negateInteger(i) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -8787,18 +8811,22 @@ var h$glbl;
 function h$getGlbl() { h$glbl = this; }
 h$getGlbl();
 function h$log() {
-  if(h$glbl) {
-    if(h$glbl.console && h$glbl.console.log) {
-      h$glbl.console.log.apply(h$glbl.console,arguments);
+  try {
+    if(h$glbl) {
+      if(h$glbl.console && h$glbl.console.log) {
+        h$glbl.console.log.apply(h$glbl.console,arguments);
+      } else {
+        h$glbl.print.apply(this,arguments);
+      }
     } else {
-      h$glbl.print.apply(this,arguments);
+      if(typeof console !== 'undefined') {
+        console.log.apply(console, arguments);
+      } else if(typeof print !== 'undefined') {
+        print.apply(null, arguments);
+      }
     }
-  } else {
-    if(typeof console !== 'undefined') {
-      console.log.apply(console, arguments);
-    } else if(typeof print !== 'undefined') {
-      print.apply(null, arguments);
-    }
+  } catch(ex) {
+    // ignore console.log exceptions (for example for IE9 when console is closed)
   }
 }
 function h$collectProps(o) {
@@ -8811,6 +8839,9 @@ function h$collectProps(o) {
 var h$programArgs;
 if(h$isNode) {
     h$programArgs = process.argv.slice(1);
+} else if(h$isJvm) {
+    h$programArgs = h$getGlobal(this).arguments.slice(0);
+    h$programArgs.unshift("a.js");
 } else if(h$isJsShell && typeof h$getGlobal(this).scriptArgs !== 'undefined') {
     h$programArgs = h$getGlobal(this).scriptArgs.slice(0);
     h$programArgs.unshift("a.js");
@@ -8974,7 +9005,7 @@ function h$localtime_r(timep_v, timep_o, result_v, result_o) {
   { h$ret1 = (result_o); return (result_v); };
 }
 var h$__hscore_localtime_r = h$localtime_r;
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -9003,8 +9034,9 @@ var h$__hscore_localtime_r = h$localtime_r;
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // some Enum conversion things
 // an array of generic enums
@@ -9033,7 +9065,7 @@ function h$tagToEnum(tag) {
 function h$dataTag(e) {
   return (e===true)?1:((typeof e !== 'object')?0:(e.f.a-1));
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -9062,8 +9094,9 @@ function h$dataTag(e) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // weak reference support
 // values defined in Gen2.ClosureInfo
@@ -9156,7 +9189,7 @@ function h$finalizeWeak(w) {
         { h$ret1 = (1); return (r); };
     }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -9185,8 +9218,9 @@ function h$finalizeWeak(w) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -10091,6 +10125,8 @@ h$ThreadAbortedError.prototype.toString = function() {
 function h$exitProcess(code) {
     if(h$isNode) {
  process.exit(code);
+    } else if(h$isJvm) {
+        java.lang.System.exit(code);
     } else if(h$isJsShell) {
         quit(code);
     } else if(h$isJsCore) {
@@ -10312,7 +10348,7 @@ function h$makeMVarListener(mv, stopProp, stopImmProp, preventDefault) {
   f.root = mv;
   return f;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -10341,8 +10377,9 @@ function h$makeMVarListener(mv, stopProp, stopImmProp, preventDefault) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // software transactional memory
 var h$stmTransactionActive = 0;
@@ -10619,7 +10656,7 @@ function h$stmCommitInvariant(localInv) {
         h$stmAddTVarInvariant(dep, inv);
     }
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -10648,8 +10685,9 @@ function h$stmCommitInvariant(localInv) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -10720,7 +10758,7 @@ function h$hs_spt_lookup_key(key1,key2,key3,key4) {
        s[key1][key2][key3][key4]) return s[key1][key2][key3][key4];
     return null;
 }
-/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2016 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -10749,8 +10787,9 @@ function h$hs_spt_lookup_key(key1,key2,key3,key4) {
    whether the overall intent is to support these features; otherwise,
    presume an older compiler has intent to support these features and
    define these macros by default.  */
-/* wchar_t uses ISO/IEC 10646 (2nd ed., published 2011-03-15) /
-   Unicode 6.0.  */
+/* wchar_t uses Unicode 8.0.0.  Version 8.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2014, plus Amendment 1 (published
+   2015-05-15).  */
 /* We do not support C11 <threads.h>.  */
 // values defined in Gen2.ClosureInfo
 // thread status
@@ -19885,7 +19924,7 @@ function h$ap_gen()
           var h$RTS_531 = h$paps[h$RTS_525];
           var h$RTS_532 = [h$r1, (((((h$RTS_521.a >> 8) - h$RTS_525) * 256) + h$RTS_523) - h$RTS_524)];
           for(var h$RTS_533 = 0;(h$RTS_533 < h$RTS_525);(h$RTS_533++)) {
-            h$RTS_532.push(h$stack[((h$sp - h$RTS_533) - 1)]);
+            h$RTS_532.push(h$stack[((h$sp - h$RTS_533) - 2)]);
           };
           h$sp = ((h$sp - h$RTS_525) - 2);
           h$r1 = h$init_closure({ d1: null, d2: null, f: h$RTS_531, m: 0
@@ -19933,7 +19972,7 @@ function h$ap_gen()
           var h$RTS_543 = h$paps[h$RTS_537];
           var h$RTS_544 = [h$r1, (((((h$r1.d2.d1 >> 8) - h$RTS_537) * 256) + h$RTS_535) - h$RTS_536)];
           for(var h$RTS_545 = 0;(h$RTS_545 < h$RTS_537);(h$RTS_545++)) {
-            h$RTS_544.push(h$stack[((h$sp - h$RTS_545) - 1)]);
+            h$RTS_544.push(h$stack[((h$sp - h$RTS_545) - 2)]);
           };
           h$sp = ((h$sp - h$RTS_537) - 2);
           h$r1 = h$init_closure({ d1: null, d2: null, f: h$RTS_543, m: 0
