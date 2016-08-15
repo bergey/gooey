@@ -2,44 +2,46 @@
 
 
 # Specifies the GHC version and set of packages available (e.g., lts-3.5, nightly-2015-09-21, ghc-7.10.2)
-resolver: lts-3.21
-compiler: ghcjs-0.2.0.20160112_ghc-7.10.2
+resolver: lts-6.6
+compiler: ghcjs-0.2.0.900006006_ghc-7.10.3
 compiler-check: match-exact
 setup-info:
   ghcjs:
-      source:
-            ghcjs-0.2.0.20160112_ghc-7.10.2:
-                    url: http://ghcjs.luite.com/master-20160112.tar.gz
+    source:
+      ghcjs-0.2.0.900006006_ghc-7.10.3:
+         url: "https://tolysz.org/ghcjs/lts-6.6-900006006.tar.gz"
+
+allow-newer: true
 
 # Local packages, usually specified by relative directory name
 packages:
-  - '.'
-  - location:
-      git: https://github.com/diagrams/diagrams-reflex.git
-      commit: 627ecba1eae24365f8dd2fc39d61cb8c44ec5819
-    extra-dep: true
-  - location:
-      git: https://github.com/ryantrinkle/reflex-dom.git
-      commit: 639d9ca13c2def075e83344c9afca6eafaf24219 # ghcjs-improved-base-2 branch
-    extra-dep: true
-  - location:
-      git: https://github.com/ryantrinkle/reflex.git
-      commit: cc62c11a6cde31412582758c236919d4bb766ada
-    extra-dep: true
-  - location:
-      git: https://github.com/reflex-frp/reflex-dom-contrib.git
-      commit: 01663d14906f01772ccbb688b81b4d6beef08fec
-    extra-dep: true
-  
-# Packages to be pulled from upstream that are not in the resolver (e.g., acme-missiles-0.3)
+- '.'
+- location:
+    git: https://github.com/ryantrinkle/reflex.git
+    commit: f8338f6b68c9be4e8dcddbbab2098aeffa018535
+  extra-dep: true
+- location:
+    git: https://github.com/ryantrinkle/reflex-dom.git
+    commit: e8b7d31fd2b6a8173e51096b7591ec346e33ad85
+  extra-dep: true
+- location:
+     git: https://github.com/isomorphism/these.git
+     commit: cf68c46bd049d23938f351da5618e9a09ef1102c
+- location:
+     git: https://github.com/reflex-frp/reflex-dom-contrib.git
+     commit: d07180518168fb68a9ac2ec2df71f670e8d85e6b
+- location:
+    git: https://github.com/NCrashed/ghcjs-servant-client.git
+    commit: 3bb918dd647671c3d755753cd504734499f9f6ab
+- location:
+    git: https://github.com/ghcjs/ghcjs-ffiqq.git
+    commit: b52338c2dcd3b0707bc8aff2e171411614d4aedb
+
 extra-deps:
-  - ref-tf-0.4
-  - these-0.6.1.0
-  - ghcjs-dom-0.2.3.0
-  - readable-0.3.1
-  - string-conv-0.1
-  - dependent-map-0.2.1.0
-  - dependent-sum-0.3.2.1
+- diagrams-reflex-0.1
+- ghcjs-dom-0.2.4.0
+- ref-tf-0.4
+- these-0.6.1.0
 
 # Override default flag values for local packages and extra-deps
 flags: {}
